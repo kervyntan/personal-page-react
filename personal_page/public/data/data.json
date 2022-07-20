@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Personal Page",
+    "skills": [{ "skill": "React", "path": "../assets/react-icon.png" }],
+    "content": "Personal Page done by Kervyn"
+  },
+
+  {
+    "id": 2,
+    "title": "Wordle Clone React",
+    "skills": [{ "skill": "React", "path": "../assets/react-icon.png" }],
+    "content": "Clone of Wordle done completely in React"
+  }
+]

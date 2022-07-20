@@ -1,0 +1,5 @@
+[
+  { "skill": "CSS", "path": "../assets/css.png" },
+  { "skill": "HTML", "path": "../assets/html5.png" },
+  { "skill": "JS", "path": "../assets/js.png" }
+]
