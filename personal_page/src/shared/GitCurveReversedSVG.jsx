@@ -13,8 +13,8 @@ const GitCurveReversedSVG = () => {
       <path
         d="M1 0C1 17 9 20 23.5 29.5C38 39 49 43.5 49 63.5"
         stroke="#B1B5C4"
-        stroke-dashoffset="0px"
-        stroke-dasharray="84.78448486328125px 84.78448486328125px"
+        strokeDashoffset="0px"
+        strokeDasharray="84.78448486328125px 84.78448486328125px"
       ></path>
     </svg>
   );

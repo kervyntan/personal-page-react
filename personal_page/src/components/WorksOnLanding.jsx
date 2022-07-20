@@ -9,7 +9,7 @@ const WorksOnLanding = ({ works }) => {
   const loopSkills = (item, index) => {
     return (
       <div key={item.skill} className="language">
-        <img width="20" src={require(item.path)} alt={item.skill} />
+        <img width="20" src={react} alt={item.skill} />
         <p className="languages__para"> {item.skill} </p>
       </div>
     );

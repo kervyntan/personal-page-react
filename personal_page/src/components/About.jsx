@@ -67,7 +67,7 @@ const About = () => {
     // use checkbox/radio buttons to allow for switching of state
     if (index === 0) {
       return (
-        <li className="skill">
+        <li key={`${item}`} className="skill">
           <input
             type="radio"
             id={`skill ${index + 1}`}
@@ -76,13 +76,13 @@ const About = () => {
             onClick={showSkillHandler}
             defaultChecked
           />
-          <label for={`skill ${index + 1}`}> {`${index + 1}. ${item}`} </label>
+          <label htmlFor={`skill ${index + 1}`}> {`${index + 1}. ${item}`} </label>
           <br />
         </li>
       );
     } else {
       return (
-        <li className="skill">
+        <li key={`${item}`} className="skill">
           <input
             type="radio"
             id={`skill ${index + 1}`}
@@ -90,7 +90,7 @@ const About = () => {
             value={`${index + 1}. ${item}`}
             onClick={showSkillHandler}
           />
-          <label for={`skill ${index + 1}`}> {`${index + 1}. ${item}`} </label>
+          <label htmlFor={`skill ${index + 1}`}> {`${index + 1}. ${item}`} </label>
           <br />
         </li>
       );
