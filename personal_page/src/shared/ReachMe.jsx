@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Button from "./Button";
 import wifi from "../assets/network-icon.png";
 import { send } from "emailjs-com";
+import Modal from "./Modal";
 
 const ReachMe = () => {
+  const [showModal, setShowModal] = useState(false);
   const [toSend, setToSend] = useState({
     from_name: "",
     to_name: "",
@@ -28,6 +30,15 @@ const ReachMe = () => {
   const handleChange = (e) => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
+
+  const showModalComplete = () => {
+
+  }
+
+  const closeModal = () => {
+
+  }
+
   return (
     <div className="reachme__section">
       <h2 className="reachme__section__heading"> Reach Me </h2>
@@ -65,7 +76,8 @@ const ReachMe = () => {
           value={toSend.reply_to}
           onChange={handleChange}
         /> */}
-        <Button type="submit" className="btn btn-form" text="Send Email!" />
+        {showModal && <Modal className="modal modal__email" heading="Congrats! You've submitted the email!" para="Click the button below to carry on viewing the page" />}
+        <Button type="submit" className="btn btn-form" text="Send Email!" onClickHandler={showModalComplete} closeModal={closeModal} />
       </form>
     </div>
   );
