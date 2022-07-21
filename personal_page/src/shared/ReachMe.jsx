@@ -7,6 +7,7 @@ import Modal from "./Modal";
 const ReachMe = () => {
   const [showCompleteModal, setShowCompleteModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [toSend, setToSend] = useState({
     from_name: "",
     to_name: "",
@@ -15,17 +16,23 @@ const ReachMe = () => {
   const serviceId = "service_ub6b22m";
   const templateId = "template_kkga2jv";
   const pubKey = "bZWDrA0RrWLv7nLvZ";
-  const formFields = document.querySelectorAll('reachme__section__form__input');
+  const formFields = document.querySelectorAll(
+    ".reachme__section__form__input"
+  );
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
 
     // check if any of the fields are empty
-    formFields.forEach( (item, index) => {
-      if (item.value === "") {
-        showErrorModal(true);
-      }
-    })
+    // formFields.forEach((item) => {
+    //   console.log(item);
+    //   if (item.value === "") {
+    //     setIsEmpty(true);
+    //   } else {
+    //     setIsEmpty(false);  
+    //   }
+    // });
+
     send(serviceId, templateId, toSend, pubKey)
       .then((res) => {
         console.log("Success!", res.text, res.status);
@@ -40,14 +47,21 @@ const ReachMe = () => {
   };
 
   const showModalComplete = () => {
-    setShowCompleteModal(true);
-    document.body.style.overflow = "hidden";
+    // if (isEmpty) {
+    //   setShowErrorModal(true);
+    // } else {
+      setShowCompleteModal(true);
+      document.body.style.overflow = "hidden";
   };
 
   const closeModalComplete = () => {
     setShowCompleteModal(false);
     document.body.style.overflow = "auto";
   };
+
+  // const closeModalError = () => {
+  //   setShowErrorModal(false);
+  // };
 
   return (
     <div className="reachme__section">
@@ -62,6 +76,7 @@ const ReachMe = () => {
           value={toSend.from_name}
           onChange={handleChange}
           className="reachme__section__form__input"
+          required
         />
         <input
           type="text"
@@ -70,6 +85,7 @@ const ReachMe = () => {
           value={toSend.to_name}
           onChange={handleChange}
           className="reachme__section__form__input"
+          required
         />
         <input
           type="textarea"
@@ -78,6 +94,7 @@ const ReachMe = () => {
           value={toSend.message}
           onChange={handleChange}
           className="reachme__section__form__input last-input"
+          required
         />
         {/* <input
           type="text"
@@ -94,6 +111,15 @@ const ReachMe = () => {
             closeModal={closeModalComplete}
           />
         )}
+
+        {/* {showErrorModal && (
+          <Modal
+            className="modal modal__error"
+            heading="Please ensure all fields are filled up."
+            para="Click the button below to carry on viewing the page"
+            closeModal={closeModalError}
+          />
+        )} */}
         <Button
           type="submit"
           className="btn btn-form"
