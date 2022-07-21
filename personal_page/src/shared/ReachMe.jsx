@@ -6,8 +6,7 @@ import Modal from "./Modal";
 
 const ReachMe = () => {
   const [showCompleteModal, setShowCompleteModal] = useState(false);
-  const [showErrorModal, setShowErrorModal] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const [toSend, setToSend] = useState({
     from_name: "",
     to_name: "",
@@ -23,16 +22,6 @@ const ReachMe = () => {
     // prevent form submission from refreshing page
     e.preventDefault();
 
-    // check if any of the fields are empty
-    // formFields.forEach((item) => {
-    //   console.log(item);
-    //   if (item.value === "") {
-    //     setIsEmpty(true);
-    //   } else {
-    //     setIsEmpty(false);  
-    //   }
-    // });
-
     send(serviceId, templateId, toSend, pubKey)
       .then((res) => {
         console.log("Success!", res.text, res.status);
@@ -43,6 +32,14 @@ const ReachMe = () => {
   };
 
   const handleChange = (e) => {
+        // check if any of the fields are empty
+      if (e.target.value === "") {
+        setBtnDisabled(true);
+        document.getElementsByClassName("btn-disabled").disabled = true;
+      } else {
+        setBtnDisabled(false);
+      }
+
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
@@ -50,8 +47,8 @@ const ReachMe = () => {
     // if (isEmpty) {
     //   setShowErrorModal(true);
     // } else {
-      setShowCompleteModal(true);
-      document.body.style.overflow = "hidden";
+    setShowCompleteModal(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModalComplete = () => {
@@ -120,12 +117,21 @@ const ReachMe = () => {
             closeModal={closeModalError}
           />
         )} */}
-        <Button
-          type="submit"
-          className="btn btn-form"
-          text="Send Email!"
-          onClickHandler={showModalComplete}
-        />
+        {btnDisabled ? (
+          <Button
+            type="submit"
+            className="btn btn-disabled"
+            text="Send Email!"
+            onClickHandler={showModalComplete}
+          />
+        ) : (
+          <Button
+            type="submit"
+            className="btn btn-form"
+            text="Send Email!"
+            onClickHandler={showModalComplete}
+          />
+        )}
       </form>
     </div>
   );

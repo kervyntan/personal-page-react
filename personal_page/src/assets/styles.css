@@ -66,8 +66,8 @@ h3 {
   background: var(--clr-text);
   border: none;
   border-radius: 2rem;
-  padding: 1rem 2rem;
-  width: 100%;
+  padding-block : 1rem;
+  width : fit-content;
   cursor: pointer;
 }
 
@@ -193,9 +193,7 @@ ul li {
 
 .btn-hero {
   color: var(--clr-primary-btn-landing);
-  font-weight: 500;
   margin-top: 1.5rem;
-  width: fit-content;
   padding-inline: 4rem;
 }
 
@@ -275,8 +273,16 @@ li:hover {
 .btn-form {
   margin-top: 2rem;
   color: var(--clr-primary-btn-landing);
-  width: fit-content;
   padding-inline: 5rem;
+}
+
+.btn-disabled {
+  padding-inline : 5rem;
+  margin-top : 2rem;
+  color : black; 
+  background : lightgray;
+  opacity : 0.8;
+  cursor : unset;
 }
 
 /* Featured Works */
@@ -571,8 +577,8 @@ input:checked + label {
 
 .btn-modal {
   background : var(--clr-primary-btn-landing);
-  width : fit-content;
   margin-top : 2rem;
+  padding-inline : 2rem;
 }
 
 /* Animation */
