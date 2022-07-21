@@ -325,6 +325,7 @@ li:hover {
 .reachme__section {
   margin-top: 3rem;
   animation: fadeIn 1s ease-in 0.3s 1 forwards;
+  position : relative;
 }
 
 .reachme__section__heading {
@@ -348,27 +349,24 @@ li:hover {
   border-radius: 30px;
 }
 
-.reachme__section__form__input-last {
+.last-input {
   flex: 100%;
   padding: 20px 30px 50px 30px;
   border-radius: 30px;
 }
 
-.reachme__section__form__input,
-.reachme__section__form__input-last {
+.reachme__section__form__input {
   background: transparent;
   border: 1px solid var(--clr-text);
   color: var(--clr-text);
 }
 
-.reachme__section__form__input::placeholder,
-.reachme__section__form__input-last::placeholder {
+.reachme__section__form__input::placeholder {
   color: var(--clr-text);
   opacity: 0.2;
 }
 
-.reachme__section__form__input:focus,
-.reachme__section__form__input-last:focus {
+.reachme__section__form__input:focus {
   opacity: 0.8;
   color: var(--clr-text);
   outline: none;
@@ -556,6 +554,24 @@ input:checked + label {
 
 .flex {
   display: flex;
+}
+
+/* Modal */
+.modal {
+  position : absolute;
+  text-align : center;
+  background : var(--clr-text);
+  width : fit-content;
+  padding : 3.5em;
+  border-radius : 1rem;
+  animation : textFadeIn 0.5s ease-in 1 forwards;
+  top : 3rem;
+}
+
+.btn-modal {
+  background : var(--clr-primary-btn-landing);
+  width : fit-content;
+  margin-top : 2rem;
 }
 
 /* Animation */

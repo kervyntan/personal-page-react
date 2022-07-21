@@ -5,19 +5,27 @@ import { send } from "emailjs-com";
 import Modal from "./Modal";
 
 const ReachMe = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showCompleteModal, setShowCompleteModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const [toSend, setToSend] = useState({
     from_name: "",
     to_name: "",
-    message: ""
+    message: "",
   });
   const serviceId = "service_ub6b22m";
   const templateId = "template_kkga2jv";
   const pubKey = "bZWDrA0RrWLv7nLvZ";
-
+  const formFields = document.querySelectorAll('reachme__section__form__input');
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
+
+    // check if any of the fields are empty
+    formFields.forEach( (item, index) => {
+      if (item.value === "") {
+        showErrorModal(true);
+      }
+    })
     send(serviceId, templateId, toSend, pubKey)
       .then((res) => {
         console.log("Success!", res.text, res.status);
@@ -32,12 +40,14 @@ const ReachMe = () => {
   };
 
   const showModalComplete = () => {
+    setShowCompleteModal(true);
+    document.body.style.overflow = "hidden";
+  };
 
-  }
-
-  const closeModal = () => {
-
-  }
+  const closeModalComplete = () => {
+    setShowCompleteModal(false);
+    document.body.style.overflow = "auto";
+  };
 
   return (
     <div className="reachme__section">
@@ -67,7 +77,7 @@ const ReachMe = () => {
           placeholder="Message"
           value={toSend.message}
           onChange={handleChange}
-          className="reachme__section__form__input-last"
+          className="reachme__section__form__input last-input"
         />
         {/* <input
           type="text"
@@ -76,8 +86,20 @@ const ReachMe = () => {
           value={toSend.reply_to}
           onChange={handleChange}
         /> */}
-        {showModal && <Modal className="modal modal__email" heading="Congrats! You've submitted the email!" para="Click the button below to carry on viewing the page" />}
-        <Button type="submit" className="btn btn-form" text="Send Email!" onClickHandler={showModalComplete} closeModal={closeModal} />
+        {showCompleteModal && (
+          <Modal
+            className="modal modal__email"
+            heading="Congrats! You've submitted the email!"
+            para="Click the button below to carry on viewing the page"
+            closeModal={closeModalComplete}
+          />
+        )}
+        <Button
+          type="submit"
+          className="btn btn-form"
+          text="Send Email!"
+          onClickHandler={showModalComplete}
+        />
       </form>
     </div>
   );
