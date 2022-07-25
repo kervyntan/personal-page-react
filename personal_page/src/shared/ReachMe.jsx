@@ -33,9 +33,8 @@ const ReachMe = () => {
 
   const handleChange = (e) => {
         // check if any of the fields are empty
-      if (e.target.value === "") {
+      if (toSend.from_name === "" || toSend.message === "" || toSend.to_name === "") {
         setBtnDisabled(true);
-        document.getElementsByClassName("btn-disabled").disabled = true;
       } else {
         setBtnDisabled(false);
       }
@@ -56,10 +55,6 @@ const ReachMe = () => {
     document.body.style.overflow = "auto";
   };
 
-  // const closeModalError = () => {
-  //   setShowErrorModal(false);
-  // };
-
   return (
     <div className="reachme__section">
       <h2 className="reachme__section__heading"> Reach Me </h2>
@@ -76,7 +71,7 @@ const ReachMe = () => {
           required
         />
         <input
-          type="text"
+          type="email"
           name="to_name"
           placeholder="Email Address"
           value={toSend.to_name}
@@ -122,7 +117,7 @@ const ReachMe = () => {
             type="submit"
             className="btn btn-disabled"
             text="Send Email!"
-            onClickHandler={showModalComplete}
+            disabled 
           />
         ) : (
           <Button
