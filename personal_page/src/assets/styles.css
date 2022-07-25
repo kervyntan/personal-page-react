@@ -653,9 +653,15 @@ input:checked + label {
     visibility: hidden;
   }
 
+  .about__section__one {
+    display: block;
+  }
+
   .navbar,
   .nav-list {
     gap: 0;
+    justify-content: space-around;
+    padding-inline: 0.5rem;
   }
 
   .logo .cloud {
