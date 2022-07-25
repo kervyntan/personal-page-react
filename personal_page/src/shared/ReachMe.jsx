@@ -15,9 +15,9 @@ const ReachMe = () => {
   const serviceId = "service_ub6b22m";
   const templateId = "template_kkga2jv";
   const pubKey = "bZWDrA0RrWLv7nLvZ";
-  const formFields = document.querySelectorAll(
-    ".reachme__section__form__input"
-  );
+  // const formFields = document.querySelectorAll(
+  //   ".reachme__section__form__input"
+  // );
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
@@ -88,13 +88,6 @@ const ReachMe = () => {
           className="reachme__section__form__input last-input"
           required
         />
-        {/* <input
-          type="text"
-          name="reply_to"
-          placeholder="Your email"
-          value={toSend.reply_to}
-          onChange={handleChange}
-        /> */}
         {showCompleteModal && (
           <Modal
             className="modal modal__email"

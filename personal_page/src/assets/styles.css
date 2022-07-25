@@ -24,6 +24,12 @@ html {
   box-sizing: border-box;
   font-size: 16px;
   text-decoration: none;
+  -ms-overflow-style : none; /* IE */
+  scrollbar-width : none; /* Mozilla Firefox */
+}
+
+*::-webkit-scrollbar {
+  display : none; /* Chrome + Safari */
 }
 
 body,
@@ -125,6 +131,8 @@ ul li {
 
 #container-nav-hamb {
   display: none;
+  opacity : 0.9;
+  /* animation: navFadeIn 0.5s ease-in forwards;  */
 }
 
 .navbar,
@@ -620,6 +628,18 @@ input:checked + label {
     opacity: 1;
   }
 }
+
+/* @keyframes navFadeIn {
+  0% {
+    opacity : 0;
+    top: -2vh;
+    left: 0;
+  }
+
+  100% {
+    opacity : 1;
+  }
+} */
 
 /* Media Queries */
 @media (min-width: 768px) {
