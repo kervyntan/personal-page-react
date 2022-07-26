@@ -16,11 +16,18 @@ import About from "./components/About";
 import Footer from "./shared/Footer";
 import "./shared/observer";
 import Home from "./components/Home";
+import firebase from "./shared/firebase"
 
 export default function App() {
   // window.onscroll = () => {
   //   console.log(window.scrollY); // Value of scroll Y in px
   // };
+
+  // const addAbout = firebase();
+  useEffect( () => {
+    const addAbout = document.querySelector('.reachme__section');
+    console.log(addAbout)
+  }, [])
 
   const appearOptions = {
     threshold: 0,

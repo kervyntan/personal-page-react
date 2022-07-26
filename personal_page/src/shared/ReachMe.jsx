@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from "./Button";
 import wifi from "../assets/network-icon.png";
 import { send } from "emailjs-com";
@@ -18,6 +18,7 @@ const ReachMe = () => {
   // const formFields = document.querySelectorAll(
   //   ".reachme__section__form__input"
   // );
+  const form = useRef();
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
@@ -60,7 +61,7 @@ const ReachMe = () => {
       <h2 className="reachme__section__heading"> Reach Me </h2>
       <img width="50" src={wifi} alt="wifi-icon" />
 
-      <form className="reachme__section__form" onSubmit={onSubmit}>
+      <form ref={form} className="reachme__section__form" onSubmit={onSubmit}>
         <input
           type="text"
           name="from_name"
