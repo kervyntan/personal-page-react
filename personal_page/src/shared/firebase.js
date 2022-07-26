@@ -2,13 +2,9 @@ import {
     initializeApp
 } from "firebase/app"
 import {
-    getFirestore,
-    collection,
-    getDocs,
-    addDoc
+    getFirestore
 } from "firebase/firestore"
 
-const firebase = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyA_26Um8CHxc_uqMVTG1mYLxDvtht-c2Xg",
         authDomain: "personal-page-51742.firebaseapp.com",
@@ -24,31 +20,27 @@ const firebase = () => {
     // init database services
     const db = getFirestore();
 
+    export {db}
+
     // collection ref
-    const colRef = collection(db, 'about');
+    // const colRef = collection(db, 'about');
 
-    // get collection data  
-    getDocs(colRef)
-        .then((snapshot) => {
-            let data = []
-            console.log(snapshot);
-            console.log(snapshot.docs);
+    // // get collection data  
+    // getDocs(colRef)
+    //     .then((snapshot) => {
+    //         let data = []
+    //         console.log(snapshot);
+    //         console.log(snapshot.docs);
 
-            snapshot.docs.forEach((doc) => {
-                console.log(doc.data());
-                data.push({
-                    ...doc.data(),
-                    id: doc.id
-                })
-            })
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    const addAbout = document.querySelector('.reachme__section');
-    console.log(addAbout)
-
-    return addAbout;
-}
-export default firebase;
+    //         snapshot.docs.forEach((doc) => {
+    //             console.log(doc.data());
+    //             data.push({
+    //                 ...doc.data(),
+    //                 id: doc.id
+    //             })
+    //         })
+    //         console.log(data);
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
