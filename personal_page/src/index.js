@@ -1,6 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { initializeApp } from "firebase/app"
+import {
+  getFirestore, collection, getDocs
+} from "firebase/firestore"
 
 import App from "./App";
 
@@ -15,7 +18,21 @@ const firebaseConfig = {
   appId: "1:483745827843:web:a9976f861ef3c5e2811236"
 };
 
+// init firebase app
 initializeApp(firebaseConfig);
+
+// init database services
+const db = getFirestore();
+
+// collection ref
+const colRef = collection(db, 'about');
+
+// get collection data  
+getDocs(colRef)
+.then((snapshot) => {
+  console.log(snapshot);
+  console.log(snapshot.docs);
+})
 
 root.render(
   <StrictMode>

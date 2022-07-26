@@ -649,8 +649,8 @@ input:checked + label {
 }
 
 @media (max-width: 768px) {
-  .nav-list {
-    visibility: hidden;
+  ul.nav-list {
+    display : none;
   }
 
   .about__section__one {
@@ -660,7 +660,7 @@ input:checked + label {
   .navbar,
   .nav-list {
     gap: 0;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-inline: 0.5rem;
   }
 
