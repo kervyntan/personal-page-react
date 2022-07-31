@@ -25,8 +25,25 @@ const ReachMe = () => {
   //   ".reachme__section__form__input"
   // );
 
+  const colRef = collection(db, 'about');
+
   const addAbout = document.querySelector('.reachme__section');
   console.log(addAbout)
+
+  const testForm = document.querySelector('.testForm');
+  
+  console.log(testForm);
+  testForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addDoc(colRef, {
+      name : testForm.name.value,
+      test: testForm.name.value
+    })
+    .then( () => {
+      console.log("Form submitted!")
+      testForm.reset();
+    })
+  })
 
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
@@ -130,6 +147,11 @@ const ReachMe = () => {
             onClickHandler={showModalComplete}
           />
         )}
+      </form>
+
+      <form className="testForm">
+          <input type="text" name="name" />
+          <button type="submit">Click here</button>
       </form>
     </div>
   );
