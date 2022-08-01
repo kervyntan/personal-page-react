@@ -18,6 +18,9 @@ const ReachMe = () => {
     to_name: "",
     message: "",
   });
+  const contactForm = useRef('contactForm');
+  const reachMeForm = useRef('reachMeForm');
+  const colRef = collection(db, 'about');
   const serviceId = "service_ub6b22m";
   const templateId = "template_kkga2jv";
   const pubKey = "bZWDrA0RrWLv7nLvZ";
@@ -27,6 +30,7 @@ const ReachMe = () => {
 
   const addAbout = document.querySelector('.reachme__section');
   console.log(addAbout)
+  console.log(contactForm.current);
 
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
@@ -39,11 +43,34 @@ const ReachMe = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    addDoc(colRef, {
+      name : reachMeForm.current.to_name.value,
+      test : reachMeForm.current.from_name.value
+    })
+    .then( () => {
+      console.log("entry added");
+    })
+    .catch( () => {
+      console.log('check syntax')
+    })
+
+    setToSend({
+      from_name: "",
+      to_name: "",
+      message: "",
+    });
   };
+
+  const testOnSubmit = (e) => {
+    e.preventDefault();
+
+    contactForm.current.reset();
+  }
 
   const handleChange = (e) => {
         // check if any of the fields are empty
-      if (toSend.from_name === "" || toSend.message === "" || toSend.to_name === "") {
+      if (toSend.from_name === "" || toSend.message === "" || (toSend.to_name === "" || !toSend.to_name.includes("@"))) {
         setBtnDisabled(true);
       } else {
         setBtnDisabled(false);
@@ -56,8 +83,10 @@ const ReachMe = () => {
     // if (isEmpty) {
     //   setShowErrorModal(true);
     // } else {
-    setShowCompleteModal(true);
-    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      setShowCompleteModal(true);
+      document.body.style.overflow = "hidden";
+    }, 1000)
   };
 
   const closeModalComplete = () => {
@@ -70,7 +99,7 @@ const ReachMe = () => {
       <h2 className="reachme__section__heading"> Reach Me </h2>
       <img width="50" src={wifi} alt="wifi-icon" />
 
-      <form className="reachme__section__form" onSubmit={onSubmit}>
+      <form ref={reachMeForm} className="reachme__section__form" onSubmit={onSubmit}>
         <input
           type="text"
           name="from_name"
@@ -78,6 +107,7 @@ const ReachMe = () => {
           value={toSend.from_name}
           onChange={handleChange}
           className="reachme__section__form__input"
+          text=""
           required
         />
         <input
@@ -87,6 +117,7 @@ const ReachMe = () => {
           value={toSend.to_name}
           onChange={handleChange}
           className="reachme__section__form__input"
+          text=""
           required
         />
         <input
@@ -96,6 +127,7 @@ const ReachMe = () => {
           value={toSend.message}
           onChange={handleChange}
           className="reachme__section__form__input last-input"
+          text=""
           required
         />
         {showCompleteModal && (
@@ -130,6 +162,12 @@ const ReachMe = () => {
             onClickHandler={showModalComplete}
           />
         )}
+      </form>
+
+      <form ref={contactForm} className="testForm" onSubmit={testOnSubmit} >
+          <input type="text" name="name" required/>
+          <input type="text" name="test" required/>
+          <button type="submit">Click Here</button>
       </form>
     </div>
   );
