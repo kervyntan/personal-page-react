@@ -7,7 +7,10 @@ import {db} from "./firebase"
 import {
   collection,
   getDocs,
-  addDoc
+  addDoc,
+  onSnapshot,
+  query,
+  where
 } from "firebase/firestore"
 
 const ReachMe = () => {
@@ -24,14 +27,31 @@ const ReachMe = () => {
   const serviceId = "service_ub6b22m";
   const templateId = "template_kkga2jv";
   const pubKey = "bZWDrA0RrWLv7nLvZ";
-  // const formFields = document.querySelectorAll(
-  //   ".reachme__section__form__input"
-  // );
 
-  const addAbout = document.querySelector('.reachme__section');
-  console.log(addAbout)
-  console.log(contactForm.current);
+  // const addAbout = document.querySelector('.reachme__section');
+  // console.log(addAbout)
+  // console.log(contactForm.current);
 
+  //  getting data of the collection in realtime
+  onSnapshot(colRef, (snapshot) => {
+    let collection = [];
+    snapshot.forEach( (item) => {
+      collection.push({id: item.id, ...item.data()})
+    })
+    console.log(collection);
+  })
+  console.log(colRef)
+
+  // query to db
+  const q = query(colRef, where("name", "==", "test@gmail.com"))
+  console.log(q)
+
+  getDocs(q)
+  .then( (docs) => {
+    docs.forEach( (doc) => {
+      console.log(doc.data());
+    })
+  })
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
