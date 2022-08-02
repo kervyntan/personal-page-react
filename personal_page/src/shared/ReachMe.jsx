@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "./Button";
 import wifi from "../assets/network-icon.png";
 import { send } from "emailjs-com";
@@ -30,20 +30,23 @@ const ReachMe = () => {
   const addAbout = document.querySelector('.reachme__section');
   console.log(addAbout)
 
+  useEffect( () =>  {
   const testForm = document.querySelector('.testForm');
   
   console.log(testForm);
-  testForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    addDoc(colRef, {
-      name : testForm.name.value,
-      test: testForm.name.value
-    })
-    .then( () => {
-      console.log("Form submitted!")
-      testForm.reset();
-    })
-  })
+  }, [])
+  
+  // testForm.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   addDoc(colRef, {
+  //     name : testForm.name.value,
+  //     test: testForm.test.value
+  //   })
+  //   .then( () => {
+  //     console.log("Form submitted!")
+  //     testForm.reset();
+  //   })
+  // })
 
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
@@ -149,10 +152,12 @@ const ReachMe = () => {
         )}
       </form>
 
-      <form className="testForm">
-          <input type="text" name="name" />
-          <button type="submit">Click here</button>
+      <form classname="testForm">
+        <input type="text" name="name" /> 
+        <input type="text" name="test" />
+        <button type="submit">CliCK HERE</button>
       </form>
+
     </div>
   );
 };
