@@ -12,6 +12,7 @@ import {
   query,
   where,
   orderBy,
+  doc,
   serverTimestamp
 } from "firebase/firestore"
 
@@ -55,6 +56,17 @@ const ReachMe = () => {
     docs.forEach( (doc) => {
       console.log(doc.data());
     })
+  })
+
+  // get a single document
+  const docRef = doc(db, 'about', "9NX7VukHCyZvv0l14spR");
+  getDocs(docRef)
+  .then( (doc) => {
+    console.log(doc.data());
+  })
+  // realtime for single document
+  onSnapshot(docRef, (doc) => {
+    console.log(doc.data())
   })
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
