@@ -46,6 +46,9 @@ const ReachMe = () => {
   const q = query(colRef, where("name", "==", "test@gmail.com"))
   console.log(q)
 
+
+  // getDocs returns a promise
+  // catch promise and loop through each entry
   getDocs(q)
   .then( (docs) => {
     docs.forEach( (doc) => {
