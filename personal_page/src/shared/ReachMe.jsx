@@ -3,10 +3,11 @@ import Button from "./Button";
 import wifi from "../assets/network-icon.png";
 import { send } from "emailjs-com";
 import Modal from "./Modal";
-import {db} from "./firebase"
+import {db, auth} from "./firebase"
 import {
   collection,
   getDocs,
+  getDoc,
   addDoc,
   onSnapshot,
   query,
@@ -63,14 +64,15 @@ const ReachMe = () => {
 
   // get a single document
   const docRef = doc(db, 'about', "9NX7VukHCyZvv0l14spR");
-  getDocs(docRef)
+  console.log(docRef);
+  getDoc(docRef)
   .then( (doc) => {
     console.log(doc.data());
   })
   // realtime for single document
-  onSnapshot(docRef, (doc) => {
-    console.log(doc.data())
-  })
+  // onSnapshot(docRef, (doc) => {
+  //   console.log(doc.data())
+  // })
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
     e.preventDefault();
