@@ -2,6 +2,10 @@ import React, { useRef, useState } from "react";
 import { db, auth } from "../../shared/firebase";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
+import {
+    signInWithEmailAndPassword
+  } from "firebase/auth"
+  
 
 const Login = () => {
   const [creds, setCreds] = useState({
@@ -12,7 +16,19 @@ const Login = () => {
   const [showCompleteModal, setShowCompleteModal] = useState(false);
 
   const loginForm = useRef("loginForm");
-  const loginFormHandler = () => {};
+
+  const loginFormHandler = () => {
+    const email = loginForm.current.email.value;
+    const password = loginForm.current.password.value;
+    signInWithEmailAndPassword(auth, email, password)
+    .then( (creds) => {
+        console.log(email + " is logged in!")
+        console.log(creds.user);
+    })
+    .catch( (err) => {
+        console.log(err.message);
+    })
+  };
 
   const handleChange = (e) => {
     console.log(e.target.value);

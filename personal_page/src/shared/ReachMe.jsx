@@ -16,12 +16,6 @@ import {
   doc,
   serverTimestamp
 } from "firebase/firestore"
-import {
-  createUserWithEmailAndPassword,
-  signOut,
-  signInWithEmailAndPassword
-} from "firebase/auth"
-
 const ReachMe = () => {
   const [showCompleteModal, setShowCompleteModal] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -112,23 +106,23 @@ const ReachMe = () => {
   const testOnSubmit = (e) => {
     e.preventDefault();
 
-    const email = contactForm.current.name.value;
-    const password = contactForm.current.test.value;
-    signInWithEmailAndPassword(auth, email, password)
-    .then ( (credsOfUser) => {
-      // console.log("User created: " + credsOfUser.user)
-      console.log(email + " is signed in!", credsOfUser.user);
-    })
-    .catch( (err) => {
-      console.log(err.message)
-    })
+    // const email = contactForm.current.name.value;
+    // const password = contactForm.current.test.value;
+    // signInWithEmailAndPassword(auth, email, password)
+    // .then ( (credsOfUser) => {
+    //   // console.log("User created: " + credsOfUser.user)
+    //   console.log(email + " is signed in!", credsOfUser.user);
+    // })
+    // .catch( (err) => {
+    //   console.log(err.message)
+    // })
   }
 
   const signOutHandler = () => {
-    signOut(auth)
-    .then( () => {
-      console.log("user has signed out")
-    })
+    // signOut(auth)
+    // .then( () => {
+    //   console.log("user has signed out")
+    // })
   }
 
   const handleChange = (e) => {
