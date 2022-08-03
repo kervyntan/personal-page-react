@@ -10,7 +10,10 @@ import {
   addDoc,
   onSnapshot,
   query,
-  where
+  where,
+  orderBy,
+  doc,
+  serverTimestamp
 } from "firebase/firestore"
 
 const ReachMe = () => {
@@ -43,8 +46,10 @@ const ReachMe = () => {
   console.log(colRef)
 
   // query to db
-  const q = query(colRef, where("name", "==", "test@gmail.com"))
-  console.log(q)
+  const q = query(colRef, where("name", "==", "test@gmail.com"), orderBy("test", "desc"))
+
+  // query to db for no restriction data
+  const qq = query(colRef, orderBy("createdAt"))
 
 
   // getDocs returns a promise
@@ -54,6 +59,17 @@ const ReachMe = () => {
     docs.forEach( (doc) => {
       console.log(doc.data());
     })
+  })
+
+  // get a single document
+  const docRef = doc(db, 'about', "9NX7VukHCyZvv0l14spR");
+  getDocs(docRef)
+  .then( (doc) => {
+    console.log(doc.data());
+  })
+  // realtime for single document
+  onSnapshot(docRef, (doc) => {
+    console.log(doc.data())
   })
   const onSubmit = (e) => {
     // prevent form submission from refreshing page
@@ -69,7 +85,8 @@ const ReachMe = () => {
 
     addDoc(colRef, {
       name : reachMeForm.current.to_name.value,
-      test : reachMeForm.current.from_name.value
+      test : reachMeForm.current.from_name.value,
+      createdAt : serverTimestamp()
     })
     .then( () => {
       console.log("entry added");
