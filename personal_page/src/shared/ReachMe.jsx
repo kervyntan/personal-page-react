@@ -16,6 +16,9 @@ import {
   doc,
   serverTimestamp
 } from "firebase/firestore"
+import {
+  createUserWithEmailAndPassword
+} from "firebase/auth"
 
 const ReachMe = () => {
   const [showCompleteModal, setShowCompleteModal] = useState(false);
@@ -107,7 +110,15 @@ const ReachMe = () => {
   const testOnSubmit = (e) => {
     e.preventDefault();
 
-    contactForm.current.reset();
+    const email = contactForm.current.name.value;
+    const password = contactForm.current.test.value;
+    createUserWithEmailAndPassword(auth, email, password)
+    .then ( (credsOfUser) => {
+      console.log("User created: " + credsOfUser.user)
+    })
+    .catch( (err) => {
+      console.log(err)
+    })
   }
 
   const handleChange = (e) => {
