@@ -71,7 +71,7 @@ h3 {
 .btn {
   background: var(--clr-text);
   border: none;
-  border-radius: 2rem;
+  border-radius : 1rem;
   padding-block : 1rem;
   width : fit-content;
   cursor: pointer;
@@ -329,7 +329,7 @@ li:hover {
   flex-wrap: wrap;
   border: 1px solid var(--clr-text);
   width: fit-content;
-  border-radius: 15px;
+  border-radius : 1rem;
   gap: 10px;
   padding-inline: 10px;
   color: white;
@@ -361,13 +361,13 @@ li:hover {
   flex: 40%;
   padding-block: 20px;
   padding-inline: 30px;
-  border-radius: 30px;
+  border-radius : 1rem;
 }
 
 .last-input {
   flex: 100%;
   padding: 20px 30px 50px 30px;
-  border-radius: 30px;
+  border-radius : 1rem;
 }
 
 .reachme__section__form__input {
@@ -447,7 +447,7 @@ li:hover {
 .about__section__one {
   display: flex;
   border: 1px solid var(--clr-git-branch);
-  border-radius: 2rem;
+  border-radius : 1rem;
   padding: 2rem;
   align-items: center;
   gap: 1rem;
@@ -553,7 +553,7 @@ label {
   border: 1px solid var(--clr-text);
   padding-block: 0.5rem;
   padding-inline: 1.5rem;
-  border-radius: 2rem;
+  border-radius : 1rem;
   /* margin-right : 1rem; */
   cursor: pointer;
 }
@@ -589,6 +589,49 @@ input:checked + label {
   padding-inline : 2rem;
 }
 
+/**** CMS Styling ****/
+
+/* Login Page */
+.login {
+  max-width : 50vw;
+  margin : 0 auto;
+  text-align : center;
+}
+
+.login__heading {
+  color : var(--clr-text);
+  opacity : 0.5;
+}
+
+.login__form {
+  display : grid;
+  grid-template-columns : 1fr 1fr;
+  grid-gap : 1em;
+  width : fit-content;
+  justify-content: center;
+  margin : 0 auto;
+  margin-top : 1em;
+  background : var(--clr-text);
+  border-radius : 1rem;
+  padding : 2rem;
+}
+
+.login__form__input {
+  padding : 0.5rem;
+}
+
+.login__form__input::placeholder {
+  opacity : 0.5;
+}
+
+.login__form label{
+  text-align : left;
+}
+
+.btn-login {
+  background : var(--clr-primary-btn-landing);
+  margin : 0 auto;
+}
 /* Animation */
 
 @keyframes risingSun {

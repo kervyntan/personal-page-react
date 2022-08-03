@@ -16,7 +16,8 @@ import About from "./components/About";
 import Footer from "./shared/Footer";
 import "./shared/observer";
 import Home from "./components/Home";
-import firebase from "./shared/firebase"
+import SignUp from "./components/cms/SignUp";
+import Login from "./components/cms/Login";
 
 export default function App() {
   // window.onscroll = () => {
@@ -67,16 +68,12 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Hero />} />
+          <Route path="/login" element={<Login />} />
           {/* <Route path="/about" element={<About />} /> */}
         </Routes>
         <Footer />
       </div>
-      {/* <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Hero />} />
-       
-      </Routes> */}
+
     </Router>
   );
 }

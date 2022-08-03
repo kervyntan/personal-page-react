@@ -226,15 +226,18 @@ const ReachMe = () => {
           />
         )}
       </form>
-
+{/* 
       <form ref={contactForm} className="testForm" onSubmit={testOnSubmit} >
           <input type="text" name="name" required/>
           <input type="text" name="test" required/>
           <button type="submit">Click Here</button>
       </form>
 
-      <Button onClickHandler={signOutHandler} text="Sign out" />
+      <Button onClickHandler={signOutHandler} text="Sign out" /> */}
+
+      
     </div>
+    
   );
 };
 
