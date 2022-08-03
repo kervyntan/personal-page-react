@@ -17,7 +17,9 @@ import {
   serverTimestamp
 } from "firebase/firestore"
 import {
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signOut,
+  signInWithEmailAndPassword
 } from "firebase/auth"
 
 const ReachMe = () => {
@@ -112,12 +114,20 @@ const ReachMe = () => {
 
     const email = contactForm.current.name.value;
     const password = contactForm.current.test.value;
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
     .then ( (credsOfUser) => {
-      console.log("User created: " + credsOfUser.user)
+      // console.log("User created: " + credsOfUser.user)
+      console.log(email + " is signed in!", credsOfUser.user);
     })
     .catch( (err) => {
-      console.log(err)
+      console.log(err.message)
+    })
+  }
+
+  const signOutHandler = () => {
+    signOut(auth)
+    .then( () => {
+      console.log("user has signed out")
     })
   }
 
@@ -222,6 +232,8 @@ const ReachMe = () => {
           <input type="text" name="test" required/>
           <button type="submit">Click Here</button>
       </form>
+
+      <Button onClickHandler={signOutHandler} text="Sign out" />
     </div>
   );
 };
