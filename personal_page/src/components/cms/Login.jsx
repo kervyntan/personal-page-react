@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import {Link} from "react-router-dom";
 import { db, auth } from "../../shared/firebase";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
@@ -98,6 +99,9 @@ const Login = () => {
             onClickHandler={showModalComplete}
           />
         )}
+        <Link to="/signup">
+          Sign Up
+        </Link>
       </form>
     </div>
   );

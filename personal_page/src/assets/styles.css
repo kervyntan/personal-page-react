@@ -614,10 +614,13 @@ input:checked + label {
   background : var(--clr-text);
   border-radius : 1rem;
   padding : 2rem;
+  place-items: center;
 }
 
 .login__form__input {
   padding : 0.5rem;
+  border: 0.1px solid grey;
+  border-radius : 1rem;
 }
 
 .login__form__input::placeholder {
@@ -628,10 +631,17 @@ input:checked + label {
   text-align : left;
 }
 
+.login__form a {
+  color : black;
+  text-decoration : underline;
+}
+
 .btn-login {
   background : var(--clr-primary-btn-landing);
   margin : 0 auto;
+  width : 100%;
 }
+
 /* Animation */
 
 @keyframes risingSun {
