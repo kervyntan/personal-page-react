@@ -16,6 +16,11 @@ const SignUp = () => {
 
   const signupForm = useRef("signupForm");
 
+//   const showPassword = () => {
+//     const password = document.querySelector('.password');
+//     password.type = "text";
+//   }
+
   const signupFormHandler = () => {
     const email = signupForm.current.email.value;
     const password = signupForm.current.password.value;
@@ -63,6 +68,8 @@ const SignUp = () => {
           text=""
           required
         />
+
+        {/* can add the eye icon to allow for the password to be visible */}
         <label htmlFor="password"> Password: </label>
         <input
           type="password"
@@ -70,7 +77,7 @@ const SignUp = () => {
           placeholder="Password"
           value={creds.password}
           onChange={handleChange}
-          className="signup__form__input"
+          className="signup__form__input password"
           text=""
           required
         />
@@ -83,10 +90,11 @@ const SignUp = () => {
           placeholder="Retype Password"
           value={creds.confirm_password}
           onChange={handleChange}
-          className="signup__form__input"
+          className="signup__form__input confirm_password"
           text=""
           required
         />
+
         {showCompleteModal && (
           <Modal
             className="modal modal__email"
@@ -110,6 +118,8 @@ const SignUp = () => {
             onClickHandler={showModalComplete}
           />
         )}
+
+        {/* <Button text="click here" onClickHandler={showPassword} /> */}
         <Link to="/signup">Sign Up</Link>
       </form>
     </div>
