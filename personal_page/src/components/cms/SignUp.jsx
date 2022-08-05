@@ -13,7 +13,6 @@ const SignUp = () => {
   });
   const [btnDisabled, setBtnDisabled] = useState(false);
   const [showCompleteModal, setShowCompleteModal] = useState(false);
-
   const signupForm = useRef("signupForm");
 
   const showPassword = () => {
@@ -42,7 +41,10 @@ const SignUp = () => {
   };
 
   const handleChange = (e) => {
-    // console.log(e.target.value);
+    if (creds.email === "" || creds.password === "" || creds.confirm_password === "") {
+        setBtnDisabled(true);
+    }
+
     setCreds({ ...creds, [e.target.name]: e.target.value });
   };
 

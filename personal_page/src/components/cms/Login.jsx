@@ -32,7 +32,9 @@ const Login = () => {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    if (creds.email === "" || creds.password === "") {
+      setBtnDisabled(true);
+  }
     setCreds({ ...creds, [e.target.name]: e.target.value });
   };
 
