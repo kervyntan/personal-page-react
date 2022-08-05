@@ -9,17 +9,24 @@ const SignUp = () => {
   const [creds, setCreds] = useState({
     email: "",
     password: "",
-    confirm_password : ""
+    confirm_password: "",
   });
   const [btnDisabled, setBtnDisabled] = useState(false);
   const [showCompleteModal, setShowCompleteModal] = useState(false);
 
   const signupForm = useRef("signupForm");
 
-//   const showPassword = () => {
-//     const password = document.querySelector('.password');
-//     password.type = "text";
-//   }
+  const showPassword = () => {
+    const password = document.querySelector(".password");
+    if (password.type === "password") {
+      password.type = "text";
+    }
+
+    if (password.type === "text") {
+      password.type = "password";
+    }
+    
+  };
 
   const signupFormHandler = () => {
     const email = signupForm.current.email.value;
@@ -56,7 +63,11 @@ const SignUp = () => {
   return (
     <div className="signup">
       <h2 className="signup__heading">Sign Up: </h2>
-      <form ref={signupForm} className="signup__form" onSubmit={signupFormHandler}>
+      <form
+        ref={signupForm}
+        className="signup__form"
+        onSubmit={signupFormHandler}
+      >
         <label htmlFor="email"> Email: </label>
         <input
           type="email"
@@ -81,7 +92,7 @@ const SignUp = () => {
           text=""
           required
         />
-        
+
         {/* add condition to check that both passwords match */}
         <label htmlFor="password"> Confirm Password: </label>
         <input
@@ -120,7 +131,7 @@ const SignUp = () => {
         )}
 
         {/* <Button text="click here" onClickHandler={showPassword} /> */}
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Login</Link>
       </form>
     </div>
   );
