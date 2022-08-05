@@ -592,18 +592,21 @@ input:checked + label {
 /**** CMS Styling ****/
 
 /* Login Page */
-.login {
+.login,
+.signup  {
   max-width : 50vw;
   margin : 0 auto;
   text-align : center;
 }
 
-.login__heading {
+.login__heading,
+.signup__heading {
   color : var(--clr-text);
   opacity : 0.5;
 }
 
-.login__form {
+.login__form,
+.signup__form {
   display : grid;
   grid-template-columns : 1fr 1fr;
   grid-gap : 1em;
@@ -617,30 +620,37 @@ input:checked + label {
   place-items: center;
 }
 
-.login__form__input {
+.login__form__input,
+.signup__form__input {
   padding : 0.5rem;
   border: 0.1px solid grey;
   border-radius : 1rem;
 }
 
-.login__form__input::placeholder {
+.login__form__input::placeholder,
+.signup__form__input::placeholder {
   opacity : 0.5;
 }
 
-.login__form label{
+.login__form label,
+.signup__form label {
   text-align : left;
 }
 
-.login__form a {
+.login__form a,
+.signup__form a  {
   color : black;
   text-decoration : underline;
 }
 
-.btn-login {
+.btn-login,
+.btn-signup {
   background : var(--clr-primary-btn-landing);
   margin : 0 auto;
   width : 100%;
 }
+
+/* SignUp */
 
 /* Animation */
 
