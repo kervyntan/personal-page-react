@@ -1,12 +1,9 @@
 import React, { useRef, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { db, auth } from "../../shared/firebase";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
-import {
-    signInWithEmailAndPassword
-  } from "firebase/auth"
-  
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [creds, setCreds] = useState({
@@ -14,27 +11,51 @@ const Login = () => {
     password: "",
   });
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [showCompleteModal, setShowCompleteModal] = useState(false);
-
+  const [showCompleteModal, setShowCompleteModal] = useState({
+    success: false,
+    open: false,
+  });
+  const [errorMsg, setErrorMsg] = useState("");
   const loginForm = useRef("loginForm");
+  const navigate = useNavigate();
 
-  const loginFormHandler = () => {
+  const loginFormHandler = (e) => {
+    e.preventDefault();
     const email = loginForm.current.email.value;
     const password = loginForm.current.password.value;
     signInWithEmailAndPassword(auth, email, password)
-    .then( (creds) => {
-        console.log(email + " is logged in!")
+      .then((creds) => {
+        console.log(email + " is logged in!");
         console.log(creds.user);
-    })
-    .catch( (err) => {
+        setErrorMsg("");
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 1000)
+        // setTimeout(() => {
+        //   setShowCompleteModal({
+        //     success: true,
+        //     open: true,
+        //   });
+        //   document.body.style.overflow = "hidden";
+        // }, 1000);
+      })
+      .catch((err) => {
         console.log(err.message);
-    })
+        setErrorMsg(err.message);
+        setTimeout(() => {
+          setShowCompleteModal({
+            success: false,
+            open: true,
+          });
+          document.body.style.overflow = "hidden";
+        }, 1000);
+      });
   };
 
   const handleChange = (e) => {
-    if (creds.email === "" || creds.password === "") {
-      setBtnDisabled(true);
-  }
+    //   if (creds.email === "" || creds.password === "") {
+    //     setBtnDisabled(true);
+    // }
     setCreds({ ...creds, [e.target.name]: e.target.value });
   };
 
@@ -43,18 +64,21 @@ const Login = () => {
     //   setShowErrorModal(true);
     // } else {
     setTimeout(() => {
-      setShowCompleteModal(true);
+      setShowCompleteModal({
+        ...showCompleteModal,
+        open: false
+      });
       document.body.style.overflow = "hidden";
-    }, 1000)
+    }, 1000);
   };
 
-  const closeModalComplete = () => {
+  const closeModal = () => {
     setShowCompleteModal(false);
     document.body.style.overflow = "auto";
   };
   return (
     <div className="login">
-        <h2 className="login__heading">Login: </h2>
+      <h2 className="login__heading">Login: </h2>
       <form ref={loginForm} className="login__form" onSubmit={loginFormHandler}>
         <label htmlFor="email"> Email: </label>
         <input
@@ -78,12 +102,21 @@ const Login = () => {
           text=""
           required
         />
-        {showCompleteModal && (
+        {showCompleteModal.success && showCompleteModal.open && (
           <Modal
-            className="modal modal__email"
-            heading="Congrats! You've submitted the email!"
+            className="modal modal__login"
+            heading="Congrats on Signing up!"
             para="Click the button below to carry on viewing the page"
-            closeModal={closeModalComplete}
+            closeModal={closeModal}
+          />
+        )}
+
+        {!showCompleteModal.success && showCompleteModal.open && (
+          <Modal
+            className="modal modal__login error"
+            heading={`Error Signing up ${errorMsg}`}
+            para="Click the button below to carry on viewing the page"
+            closeModal={closeModal}
           />
         )}
         {btnDisabled ? (
@@ -101,9 +134,7 @@ const Login = () => {
             onClickHandler={showModalComplete}
           />
         )}
-        <Link to="/signup">
-          Sign Up
-        </Link>
+        <Link to="/signup">Sign Up</Link>
       </form>
     </div>
   );

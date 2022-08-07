@@ -586,9 +586,9 @@ input:checked + label {
   top : 3rem;
 }
 
-.modal__signup {
+/* .modal__signup {
   top : 5rem;
-}
+} */
 
 /* .error {
   white-space: nowrap;
@@ -661,9 +661,14 @@ input:checked + label {
   width : 100%;
 }
 
-/* SignUp */
+/* Dashboard */
+.dashboard {
+  display : flex;
+  flex-direction : column;
+  position : absolute;
+  background : red;
 
-
+}
 /* Animation */
 
 @keyframes risingSun {

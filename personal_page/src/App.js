@@ -18,6 +18,7 @@ import "./shared/observer";
 import Home from "./components/Home";
 import SignUp from "./components/cms/SignUp";
 import Login from "./components/cms/Login";
+import Dashboard from "./components/cms/Dashboard";
 
 export default function App() {
   // window.onscroll = () => {
@@ -69,7 +70,8 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Hero />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignUp />} />\
+          <Route path='/dashboard' element={<Dashboard />} />
           {/* <Route path="/about" element={<About />} /> */}
         </Routes>
         <Footer />

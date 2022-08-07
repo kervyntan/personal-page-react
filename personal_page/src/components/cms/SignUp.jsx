@@ -45,7 +45,7 @@ const SignUp = () => {
               open: true,
             });
             document.body.style.overflow = "hidden";
-          }, 2000);
+          }, 1000);
       })
       .catch((err) => {
         // show modal that there is an error
@@ -57,7 +57,7 @@ const SignUp = () => {
               open: true,
             });
             document.body.style.overflow = "hidden";
-          }, 2000);
+          }, 1000);
       });
   };
 
