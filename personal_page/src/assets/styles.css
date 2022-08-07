@@ -590,6 +590,10 @@ input:checked + label {
   top : 5rem;
 }
 
+/* .error {
+  white-space: nowrap;
+} */
+
 .btn-modal {
   background : var(--clr-primary-btn-landing);
   margin-top : 2rem;
