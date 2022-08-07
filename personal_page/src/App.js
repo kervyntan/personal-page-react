@@ -6,7 +6,7 @@ import cloud from "./assets/cloud.png";
 // import sun from "./assets/sun.png";
 // import webdev from "./assets/web-dev.png";
 // import networkIcon from "./assets/network-icon.png";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 import Navbar from "./shared/Navbar";
 import AboutOnLanding from "./components/AboutOnLanding";
 import Hero from "./components/Hero";
@@ -19,6 +19,8 @@ import Home from "./components/Home";
 import SignUp from "./components/cms/SignUp";
 import Login from "./components/cms/Login";
 import Dashboard from "./components/cms/Dashboard";
+import AdminLayout from "./components/cms/AdminLayout";
+import SiteLayout from "./components/SiteLayout";
 
 export default function App() {
   // window.onscroll = () => {
@@ -58,25 +60,24 @@ export default function App() {
 
   return (
     <Router>
-      <div className="container">
-        <Navbar
-          img={cloud}
-          firstItem="About"
-          secondItem="Portfolio"
-          thirdItem="Contact"
-        />
+      <div>
+        {/* nested routes with outlets */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Hero />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />\
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route element={<SiteLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Hero />} />
+          </Route>
+          <Route element={<AdminLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+          {/* <Route path='/dashboard' element={<Dashboard />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
         </Routes>
-        <Footer />
       </div>
-
     </Router>
+    
   );
 }

@@ -1,12 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
+    let { dashboard } = useParams();
+    
     return (
         <div className="dashboard">
-            {/* add home icon on the left */}
-            <Link to="/dashboard"> Home </Link>
-            <Link to="/content-management"> Content Management </Link>
+            <Sidebar />
         </div>
     )
 }

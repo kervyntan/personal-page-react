@@ -662,7 +662,7 @@ input:checked + label {
 }
 
 /* Dashboard */
-.dashboard {
+.sidebar {
   display : flex;
   flex-direction : column;
   position : absolute;
