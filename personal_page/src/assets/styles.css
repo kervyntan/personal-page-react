@@ -577,10 +577,17 @@ input:checked + label {
   text-align : center;
   background : var(--clr-text);
   width : fit-content;
-  padding : 3.5em;
   border-radius : 1rem;
+  padding : 3.5em;
   animation : textFadeIn 0.5s ease-in 1 forwards;
+}
+
+.modal__email {
   top : 3rem;
+}
+
+.modal__signup {
+  top : 5rem;
 }
 
 .btn-modal {

@@ -12,7 +12,13 @@ const SignUp = () => {
     confirm_password: "",
   });
   const [btnDisabled, setBtnDisabled] = useState(false);
-  const [showCompleteModal, setShowCompleteModal] = useState(false);
+  const [showCompleteModal, setShowCompleteModal] = useState(
+    {
+        success: false,
+        open : false
+    }
+  );
+  const [errorMsg, setErrorMsg] = useState("");
   const signupForm = useRef("signupForm");
 
   const showPassword = () => {
@@ -24,44 +30,61 @@ const SignUp = () => {
     if (password.type === "text") {
       password.type = "password";
     }
-    
   };
 
-  const signupFormHandler = () => {
+  const signupFormHandler = (e) => {
+    e.preventDefault();
     const email = signupForm.current.email.value;
     const password = signupForm.current.password.value;
     createUserWithEmailAndPassword(auth, email, password)
       .then((creds) => {
         console.log(email + " is signed up!");
         console.log(creds.user);
+        setErrorMsg("");
       })
       .catch((err) => {
+        // show modal that there is an error
         console.log(err.message);
+        setErrorMsg(err.message);
       });
   };
 
   const handleChange = (e) => {
-    if (creds.email === "" || creds.password === "" || creds.confirm_password === "") {
-        setBtnDisabled(true);
-    }
+    // if (creds.email === "" || creds.password === "" || creds.confirm_password === "") {
+    //     setBtnDisabled(true);
+    // }
 
     setCreds({ ...creds, [e.target.name]: e.target.value });
   };
 
-  const showModalComplete = () => {
-    // if (isEmpty) {
-    //   setShowErrorModal(true);
-    // } else {
-    setTimeout(() => {
-      setShowCompleteModal(true);
-      document.body.style.overflow = "hidden";
-    }, 1000);
+  const showModal = () => {
+
+    if (errorMsg === "") {
+      setTimeout(() => {
+        setShowCompleteModal({
+            success : true,
+            open : true
+        });
+        document.body.style.overflow = "hidden";
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setShowCompleteModal({
+            success : false,
+            open : true
+      });
+        document.body.style.overflow = "hidden";
+      }, 1000);
+    }
   };
 
-  const closeModalComplete = () => {
-    setShowCompleteModal(false);
+  const closeModal = () => {
+    setShowCompleteModal({
+        ...showCompleteModal, open : false
+    });
     document.body.style.overflow = "auto";
   };
+
   return (
     <div className="signup">
       <h2 className="signup__heading">Sign Up: </h2>
@@ -108,12 +131,21 @@ const SignUp = () => {
           required
         />
 
-        {showCompleteModal && (
+        {(showCompleteModal.success && showCompleteModal.open) && (
           <Modal
-            className="modal modal__email"
+            className="modal modal__signup"
             heading="Congrats on Signing up!"
             para="Click the button below to carry on viewing the page"
-            closeModal={closeModalComplete}
+            closeModal={closeModal}
+          />
+        )}
+
+        {(!showCompleteModal.success && showCompleteModal.open) && (
+          <Modal
+            className="modal modal__signup"
+            heading={`Error Signing up, ${errorMsg}`}
+            para="Click the button below to carry on viewing the page"
+            closeModal={closeModal}
           />
         )}
         {btnDisabled ? (
@@ -128,7 +160,7 @@ const SignUp = () => {
             type="submit"
             className="btn btn-signup"
             text="Sign Up"
-            onClickHandler={showModalComplete}
+            onClickHandler={showModal}
           />
         )}
 
