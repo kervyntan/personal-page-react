@@ -14,7 +14,7 @@ const Dashboard = (props) => {
         .then( () => {
             console.log("User has been successfully signed out.")
             setTimeout(() => {
-                navigate('/login')
+                navigate('/personal-page-react/login')
               }, 1000)
         })
         .catch( () => {

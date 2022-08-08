@@ -34,7 +34,7 @@ const Login = () => {
         setCredsProp(creds.user);
         setErrorMsg("");
         setTimeout(() => {
-          navigate('/dashboard')
+          navigate('/personal-page-react/dashboard')
         }, 1000)
         // setTimeout(() => {
         //   setShowCompleteModal({
