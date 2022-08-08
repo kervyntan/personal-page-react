@@ -36,38 +36,40 @@ const ReachMe = () => {
   // console.log(contactForm.current);
 
   //  getting data of the collection in realtime
-  onSnapshot(colRef, (snapshot) => {
-    let collection = [];
-    snapshot.forEach( (item) => {
-      collection.push({id: item.id, ...item.data()})
-    })
-    console.log(collection);
-  })
-  console.log(colRef)
+  // onSnapshot(colRef, (snapshot) => {
+  //   let collection = [];
+  //   snapshot.forEach( (item) => {
+  //     collection.push({id: item.id, ...item.data()})
+  //   })
+  //   console.log(collection);
+  // })
+  // console.log(colRef)
 
-  // query to db
-  const q = query(colRef, where("name", "==", "test@gmail.com"), orderBy("test", "desc"))
+  // // query to db
+  // const q = query(colRef, where("name", "==", "test@gmail.com"), orderBy("test", "desc"))
 
-  // query to db for no restriction data
-  const qq = query(colRef, orderBy("createdAt"))
+  // // query to db for no restriction data
+  // const qq = query(colRef, orderBy("createdAt"))
 
 
   // getDocs returns a promise
   // catch promise and loop through each entry
-  getDocs(q)
-  .then( (docs) => {
-    docs.forEach( (doc) => {
-      console.log(doc.data());
-    })
-  })
+  // getDocs(q)
+  // .then( (docs) => {
+  //   docs.forEach( (doc) => {
+  //     console.log(doc.data());
+  //   })
+  // })
 
   // get a single document
-  const docRef = doc(db, 'about', "9NX7VukHCyZvv0l14spR");
-  console.log(docRef);
-  getDoc(docRef)
-  .then( (doc) => {
-    console.log(doc.data());
-  })
+  // const docRef = doc(db, 'about', "9NX7VukHCyZvv0l14spR");
+  // console.log(docRef);
+  // getDoc(docRef)
+  // .then( (doc) => {
+  //   console.log(doc.data());
+  // })
+
+
   // realtime for single document
   // onSnapshot(docRef, (doc) => {
   //   console.log(doc.data())

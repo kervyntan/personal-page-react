@@ -1,12 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import Button from "../shared/Button";
+import {db} from "../shared/firebase";
+import {
+  doc,
+  getDoc
+} from "firebase/firestore";
 
 const Hero = (props) => {
   const onClickHandler = () => {};
+  const [text, setText] = useState("");
+  // setting text dynamically
+  const docRef = doc(db, 'hero', '3L9JUalhdDk00qWrQFAH');
+  getDoc(docRef)
+  .then( (doc) => {
+    setText(doc.data().hero_text);
+  })
+  .catch( (err) => {
+    console.log(err.message);
+  })
   return (
     <div className="hero fader">
       <div className="hero__text">
-        <h2> Lorem ipsum dolor sit amet. </h2>
+        <h2> {text} </h2>
         <Button
           type="submit"
           className="btn btn-hero"
