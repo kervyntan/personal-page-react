@@ -64,16 +64,16 @@ export default function App() {
       <div>
         {/* nested routes with outlets */}
         <Routes>
-          <Route path="/personal-page-react" element={<SiteLayout />}>
+          <Route element={<SiteLayout />}>
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/personal-page-react/portfolio" element={<Hero />} />
+            <Route path="/portfolio" element={<Hero />} />
           </Route>
-          <Route path="/personal-page-react" element={<AdminLayout />}>
-            <Route path="/personal-page-react/login" element={<Login />} />
-            <Route path="/personal-page-react/signup" element={<SignUp />} />
-            <Route path="/personal-page-react/dashboard" element={<Dashboard />} />
-            <Route path="/personal-page-react/content-management" element={<ContentManagement />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/content-management" element={<ContentManagement />} />
           </Route>
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
