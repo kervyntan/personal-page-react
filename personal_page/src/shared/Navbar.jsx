@@ -20,7 +20,7 @@ const Navbar = (props) => {
       <div className="logo">
         {/* props.img in the future */}
         {/* <h1> KERVYN </h1> */}
-        <Link to="/">
+        <Link to="/personal-page-react">
           <img className="cloud" src={props.img} alt="logo" />
         </Link>
       </div>
@@ -28,13 +28,13 @@ const Navbar = (props) => {
       <ul className="nav-list">
         {/* change to routes  */}
         <li className="nav-list-item">
-          <Link to="/about"> {props.firstItem} </Link>
+          <Link to="/personal-page-react/about"> {props.firstItem} </Link>
         </li>
         <li className="nav-list-item">
-          <Link to="/portfolio"> {props.secondItem} </Link>
+          <Link to="/personal-page-react/portfolio"> {props.secondItem} </Link>
         </li>
         <li className="nav-list-item">
-          <Link to="/contact"> {props.thirdItem} </Link>
+          <Link to="/personal-page-react/contact"> {props.thirdItem} </Link>
         </li>
       </ul>
 
@@ -52,13 +52,13 @@ const Navbar = (props) => {
               <div className="hamb"></div>
             </div>
             <li className="nav-list-hamb-item">
-              <Link to="/about"> {props.firstItem} </Link>
+              <Link to="/personal-page-react/about"> {props.firstItem} </Link>
             </li>
             <li className="nav-list-hamb-item">
-              <Link to="/portfolio"> {props.secondItem} </Link>
+              <Link to="/personal-page-react/portfolio"> {props.secondItem} </Link>
             </li>
             <li className="nav-list-hamb-item">
-              <Link to="/contact"> {props.thirdItem} </Link>
+              <Link to="/personal-page-react/contact"> {props.thirdItem} </Link>
             </li>
           </ul>
         </div>
