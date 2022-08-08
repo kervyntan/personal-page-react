@@ -21,6 +21,7 @@ import Login from "./components/cms/Login";
 import Dashboard from "./components/cms/Dashboard";
 import AdminLayout from "./components/cms/AdminLayout";
 import SiteLayout from "./components/SiteLayout";
+import ContentManagement from "./components/cms/ContentManagement";
 
 export default function App() {
   // window.onscroll = () => {
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/content-management" element={<ContentManagement />} />
           </Route>
           {/* <Route path='/dashboard' element={<Dashboard />} /> */}
           {/* <Route path="/about" element={<About />} /> */}

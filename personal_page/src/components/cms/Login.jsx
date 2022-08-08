@@ -10,6 +10,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  // probably need redux here to set a global variable/state
+  // update the currentUser information
+  const [credsProp, setCredsProp] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
   const [showCompleteModal, setShowCompleteModal] = useState({
     success: false,
@@ -25,8 +29,9 @@ const Login = () => {
     const password = loginForm.current.password.value;
     signInWithEmailAndPassword(auth, email, password)
       .then((creds) => {
-        console.log(email + " is logged in!");
-        console.log(creds.user);
+        // console.log(email + " is logged in!");
+        // console.log(creds.user);
+        setCredsProp(creds.user);
         setErrorMsg("");
         setTimeout(() => {
           navigate('/dashboard')

@@ -674,7 +674,22 @@ input:checked + label {
   flex-direction : column;
   position : absolute;
   background : red;
+  left : 0;
+  top : 0;
+  gap: 1em;
+}
 
+.cms-icon { 
+  width : 50px;
+}
+
+.user {
+  display : flex;
+  gap : 0.5em;
+  position : absolute;
+  right : 5px;
+  top : 5px;
+  align-items : center;
 }
 /* Animation */
 
