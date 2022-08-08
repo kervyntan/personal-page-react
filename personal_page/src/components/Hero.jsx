@@ -3,7 +3,8 @@ import Button from "../shared/Button";
 import {db} from "../shared/firebase";
 import {
   doc,
-  getDoc
+  getDoc,
+  onSnapshot
 } from "firebase/firestore";
 
 const Hero = (props) => {
@@ -11,13 +12,15 @@ const Hero = (props) => {
   const [text, setText] = useState("");
   // setting text dynamically
   const docRef = doc(db, 'hero', '3L9JUalhdDk00qWrQFAH');
-  getDoc(docRef)
-  .then( (doc) => {
+  onSnapshot(docRef, (doc) => {
     setText(doc.data().hero_text);
   })
-  .catch( (err) => {
-    console.log(err.message);
-  })
+  // .then( (doc) => {
+  //   setText(doc.data().hero_text);
+  // })
+  // .catch( (err) => {
+  //   console.log(err.message);
+  // })
   return (
     <div className="hero fader">
       <div className="hero__text">
