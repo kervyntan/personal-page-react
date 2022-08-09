@@ -64,7 +64,7 @@ export default function App() {
       <div>
         {/* nested routes with outlets */}
         <Routes>
-          <Route path="/personal-page-react" element={<SiteLayout />}>
+          <Route element={<SiteLayout />}>
             <Route index element={<Home />} />
             <Route path="/personal-page-react/about" element={<About />} />
             <Route path="/personal-page-react/portfolio" element={<Hero />} />

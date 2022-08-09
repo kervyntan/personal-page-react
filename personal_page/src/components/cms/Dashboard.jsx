@@ -24,7 +24,7 @@ const Dashboard = (props) => {
     
     return (
         <div className="dashboard">
-            <Sidebar />
+            <Sidebar dashboard="true" />
             <div className="user">
                 {/* user here will be replaced with email */}
                 <p> Hello, user </p>

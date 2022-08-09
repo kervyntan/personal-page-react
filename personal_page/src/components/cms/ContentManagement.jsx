@@ -29,7 +29,7 @@ const ContentManagement = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar contentManagement="true" />
       <form className="content-management__form" onSubmit={submitFormHandler}>
         <label htmlFor="hero_text"> Hero Text: </label>
         <input

@@ -1,9 +1,26 @@
-import React from "react";
+import React, {useRef} from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import cloud from "../../assets/cloud.png";
 
-const Sidebar = () => {
-  return (
+const Sidebar = (props) => {
+  // const dashboard = useRef('dashboard');
+  // const contentManagement = useRef('contentManagement');
+  // console.log(dashboard)
+  useEffect( () => {
+    const dashboard1 = document.querySelector('.home');
+    const contentManagement1 = document.querySelector('.content-management');
+    console.log(dashboard1)
+    console.log(contentManagement1)
+
+    if (props.home === "true") {
+      dashboard1.style.background = "blue";
+    } else if (props.contentManagement === "true") {
+      contentManagement1.style.background = "blue";
+    }
+  }, [])
+
+   return (
     <div className="sidebar">
       {/* add home icon on the left */}
       <div className="home">
