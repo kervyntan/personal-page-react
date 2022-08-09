@@ -31,6 +31,7 @@ const ContentManagement = () => {
     <>
       <Sidebar />
       <form className="content-management__form" onSubmit={submitFormHandler}>
+        <label htmlFor="hero_text"> Hero Text: </label>
         <input
           className="content-management__form__input"
           name="hero_text"
