@@ -23,15 +23,15 @@ const Sidebar = (props) => {
    return (
     <div className="sidebar">
       {/* add home icon on the left */}
-      <div className="home">
+      <div className="home sidebar__item">
       <img src={cloud} alt="cloud" class="cms-icon"/>
-      <Link to="/dashboard"> Home </Link>
+      <Link to="/personal-page-react/dashboard"> Home </Link>
       </div>
 
       {/* className to target specific tabs on sidebar to highlight */}
-      <div className="content-management"> 
+      <div className="content-management sidebar__item"> 
       <img src={cloud} alt="cloud" class="cms-icon"/>
-      <Link to="/content-management"> Content Management </Link>
+      <Link to="/personal-page-react/content-management"> Content Management </Link>
       </div>
     </div>
   );

@@ -60,6 +60,7 @@ export default function App() {
   });
 
   return (
+    // add loading icon and animation when fetching content from db
     <Router>
       <div>
         {/* nested routes with outlets */}

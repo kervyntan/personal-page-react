@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Button from "../../shared/Button";
 import {db} from "../../shared/firebase";
 import {updateDoc, doc} from "firebase/firestore";
+import SignOutBtn  from './SignOutBtn';
 
 const ContentManagement = () => {
     const docRef = doc(db, 'hero', '3L9JUalhdDk00qWrQFAH');
@@ -30,6 +31,8 @@ const ContentManagement = () => {
   return (
     <>
       <Sidebar contentManagement="true" />
+      <SignOutBtn />
+      <div class="container-cms">
       <form className="content-management__form" onSubmit={submitFormHandler}>
         <label htmlFor="hero_text"> Hero Text: </label>
         <input
@@ -40,6 +43,7 @@ const ContentManagement = () => {
         />
         <Button type="submit" text="Click Here"/>
       </form>
+    </div>
     </>
   );
 };

@@ -677,6 +677,11 @@ input:checked + label {
   left : 0;
   top : 0;
   gap: 1em;
+  /* align-items : center; */
+}
+
+.sidebar__item {
+  padding : 10px;
 }
 
 .cms-icon { 
@@ -690,6 +695,11 @@ input:checked + label {
   right : 5px;
   top : 5px;
   align-items : center;
+}
+
+.container-cms {
+  max-width : 480px;
+  margin : 0 auto;
 }
 /* Animation */
 
