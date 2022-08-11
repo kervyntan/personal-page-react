@@ -20,7 +20,7 @@ const Navbar = (props) => {
       <div className="logo">
         {/* props.img in the future */}
         {/* <h1> KERVYN </h1> */}
-        <Link to="/personal-page-react">
+        <Link to="/">
           <img className="cloud" src={props.img} alt="logo" />
         </Link>
       </div>

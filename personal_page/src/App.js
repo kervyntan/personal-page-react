@@ -29,10 +29,10 @@ export default function App() {
   // };
 
   // const addAbout = firebase();
-  useEffect( () => {
-    const addAbout = document.querySelector('.reachme__section');
-    console.log(addAbout)
-  }, [])
+  // useEffect( () => {
+  //   const addAbout = document.querySelector('.reachme__section');
+  //   console.log(addAbout)
+  // }, [])
 
   const appearOptions = {
     threshold: 0,
@@ -60,7 +60,7 @@ export default function App() {
   });
 
   return (
-    // add loading icon and animation when fetching content from db
+    // fix syntax error for data.json 10/08/2022
     <Router>
       <div>
         {/* nested routes with outlets */}

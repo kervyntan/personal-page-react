@@ -8,21 +8,37 @@ const Sidebar = (props) => {
   // const contentManagement = useRef('contentManagement');
   // console.log(dashboard)
   useEffect( () => {
-    const dashboard1 = document.querySelector('.home');
-    const contentManagement1 = document.querySelector('.content-management');
-    console.log(dashboard1)
-    console.log(contentManagement1)
+    const dashboard = document.querySelector('.home');
+    const contentManagement = document.querySelector('.content-management');
+    // console.log(dashboard1)
+    // console.log(contentManagement1)
 
     if (props.home === "true") {
-      dashboard1.style.background = "blue";
+      dashboard.style.background = "blue";
     } else if (props.contentManagement === "true") {
-      contentManagement1.style.background = "blue";
+      contentManagement.style.background = "blue";
     }
   }, [])
 
+  const showHamburger = () => {
+    let x = document.getElementById("container-nav-hamb");
+    let user = document.querySelector('.user');
+    if (x.style.display === "block") {
+      x.style.display = "none";
+      user.style.display = "block";
+      // document.body.style.overflow = "hidden";
+    } else {
+      x.style.display = "block";
+      user.style.display = "none";
+      // document.body.style.overflow = "unset";
+    }
+  };
+
    return (
+    <>
     <div className="sidebar">
       {/* add home icon on the left */}
+      
       <div className="home sidebar__item">
       <img src={cloud} alt="cloud" class="cms-icon"/>
       <Link to="/personal-page-react/dashboard"> Home </Link>
@@ -34,6 +50,32 @@ const Sidebar = (props) => {
       <Link to="/personal-page-react/content-management"> Content Management </Link>
       </div>
     </div>
+
+      <div className="hamburger-cms">
+      <div className="hamburger" onClick={showHamburger}>
+        <div className="hamb"></div>
+        <div className="hamb"></div>
+        <div className="hamb"></div>
+
+        <div id="container-nav-hamb">
+          <ul className="nav-list-hamb">
+            {/* <div className="hamburger-inside" onClick={showHamburger}>
+              <div className="hamb"></div>
+              <div className="hamb"></div>
+              <div className="hamb"></div>
+            </div> */}
+            <li className="nav-list-hamb-item">
+              <Link to="/personal-page-react/dashboard"> Home </Link>
+            </li>
+            <li className="nav-list-hamb-item">
+            <Link to="/personal-page-react/content-management"> Content Management </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    </>
   );
 };
 

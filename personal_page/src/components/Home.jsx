@@ -5,20 +5,23 @@ import Hero from "./Hero";
 import WorksOnLanding from "./WorksOnLanding";
 import ReachMe from "../shared/ReachMe";
 import technology from "../assets/technology.png";
+import data from "../data/data.json";
 
 const Home = () => {
-  let path = "./data/data.json";
+  // let path = "../data/data.json";
   const works = useRef(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(path)
-      .then((res) => res.json())
-      .then((json) => {
-        works.current = json;
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+    // fetch(path)
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     works.current = json;
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => console.log(err));
+    works.current = data;
+    setLoading(false);
   }, []);
 
   return (

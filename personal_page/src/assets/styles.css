@@ -738,6 +738,13 @@ input:checked + label {
   max-width : 480px;
   margin : 0 auto;
 }
+
+.hamburger-cms {
+  position : fixed;
+  top : 10px;
+  left : 10px;
+}
+
 /* Animation */
 
 @keyframes risingSun {
@@ -928,6 +935,10 @@ input:checked + label {
 
 @media (max-width: 768px) {
   ul.nav-list {
+    display : none;
+  }
+
+  .sidebar__item {
     display : none;
   }
 
