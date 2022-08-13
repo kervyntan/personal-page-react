@@ -7,6 +7,9 @@ import {
 import {
     getAuth
   } from "firebase/auth"
+import {
+    getStorage
+} from "firebase/storage"
 
     const firebaseConfig = {
         apiKey: "AIzaSyA_26Um8CHxc_uqMVTG1mYLxDvtht-c2Xg",
@@ -23,8 +26,9 @@ import {
     // init database services
     const db = getFirestore();
     const auth = getAuth();
+    const storage= getStorage();
 
-    export {db, auth}
+    export {db, auth, storage}
 
     // collection ref
     // const colRef = collection(db, 'about');

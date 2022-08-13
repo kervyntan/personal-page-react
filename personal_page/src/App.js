@@ -22,6 +22,7 @@ import Dashboard from "./components/cms/Dashboard";
 import AdminLayout from "./components/cms/AdminLayout";
 import SiteLayout from "./components/SiteLayout";
 import ContentManagement from "./components/cms/ContentManagement";
+import Contact from "./components/Contact";
 
 export default function App() {
   // window.onscroll = () => {
@@ -69,6 +70,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="/personal-page-react/about" element={<About />} />
             <Route path="/personal-page-react/portfolio" element={<Hero />} />
+            <Route path="/personal-page-react/contact" element={<Contact />} />
           </Route>
           <Route element={<AdminLayout />}>
             <Route path="/personal-page-react/login" element={<Login />} />
