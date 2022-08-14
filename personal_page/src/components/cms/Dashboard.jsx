@@ -12,6 +12,11 @@ const Dashboard = (props) => {
         <div className="dashboard">
             <Sidebar home="true" />
             <SignOutBtn />
+            <div className="container-cms">
+                <h2 className="dashboard__heading">
+                    Welcome to User's personal page dashboard!
+                </h2>
+            </div>
         </div>
     )
 }

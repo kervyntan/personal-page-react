@@ -12,11 +12,11 @@ const Sidebar = (props) => {
     const contentManagement = document.querySelector('.content-management');
     // console.log(dashboard1)
     // console.log(contentManagement1)
-
+    const color = "linear-gradient(#2fb5c8, #286ede)";
     if (props.home === "true") {
-      dashboard.style.background = "blue";
+      dashboard.style.background = color;
     } else if (props.contentManagement === "true") {
-      contentManagement.style.background = "blue";
+      contentManagement.style.background = color;
     }
   }, [])
 
@@ -40,13 +40,13 @@ const Sidebar = (props) => {
       {/* add home icon on the left */}
       
       <div className="home sidebar__item">
-      <img src={cloud} alt="cloud" class="cms-icon"/>
+      <img src={cloud} alt="cloud" className="cms-icon"/>
       <Link to="/personal-page-react/dashboard"> Home </Link>
       </div>
 
       {/* className to target specific tabs on sidebar to highlight */}
       <div className="content-management sidebar__item"> 
-      <img src={cloud} alt="cloud" class="cms-icon"/>
+      <img src={cloud} alt="cloud" className="cms-icon"/>
       <Link to="/personal-page-react/content-management"> Content Management </Link>
       </div>
     </div>

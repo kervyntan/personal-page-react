@@ -62,6 +62,10 @@ h3 {
   letter-spacing: 0.03em;
 }
 
+a {
+  color : black;
+}
+
 .container {
   max-width: 1440px;
   padding-inline: 5rem;
@@ -886,12 +890,16 @@ input:checked + label {
   background : var(--clr-text);
   left : 0;
   top : 0;
-  gap: 1em;
   /* align-items : center; */
 }
 
 .sidebar__item {
   padding : 10px;
+  transition : background 150ms ease-in;
+}
+
+.sidebar__item:hover {
+  background : var(--clr-primary-gray-text);
 }
 
 .cms-icon { 
@@ -908,7 +916,7 @@ input:checked + label {
 }
 
 .container-cms {
-  max-width : 480px;
+  max-width : 600px;
   margin : 0 auto;
 }
 
@@ -916,6 +924,11 @@ input:checked + label {
   position : fixed;
   top : 10px;
   left : 10px;
+}
+
+.btn-signOut {
+  padding : 1rem;
+  padding-block : 0;
 }
 
 /* Animation */

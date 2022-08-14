@@ -177,7 +177,7 @@ const SignUp = () => {
         )}
 
         {/* <Button text="click here" onClickHandler={showPassword} /> */}
-        <Link to="/login">Login</Link>
+        <Link to="/personal-page-react/login">Login</Link>
       </form>
     </div>
   );

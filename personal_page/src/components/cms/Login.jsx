@@ -3,7 +3,9 @@ import { Link, useNavigate} from "react-router-dom";
 import { db, auth } from "../../shared/firebase";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import currentUser from "./currentUser";
 
 const Login = () => {
   const [creds, setCreds] = useState({
@@ -19,6 +21,7 @@ const Login = () => {
     success: false,
     open: false,
   });
+  const currentUser = doc(db, 'currentUser', 'currentUser');
   const [errorMsg, setErrorMsg] = useState("");
   const loginForm = useRef("loginForm");
   const navigate = useNavigate();
@@ -34,8 +37,18 @@ const Login = () => {
         setCredsProp(creds.user);
         setErrorMsg("");
         setTimeout(() => {
+          onAuthStateChanged(auth, (user) => {
+            if (user) {   
+              const email = user.email;
+              const emailSymbolIndex = email.indexOf('@');
+              const userName = email.slice(0, emailSymbolIndex);
+              updateDoc(currentUser, { user : userName } )
+            } else {
+              console.log("User not found");
+            }
+          })
           navigate('/personal-page-react/dashboard')
-        }, 1000)
+        }, 3000)
         // setTimeout(() => {
         //   setShowCompleteModal({
         //     success: true,
@@ -139,7 +152,7 @@ const Login = () => {
             onClickHandler={showModalComplete}
           />
         )}
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/personal-page-react/signup">Sign Up</Link>
       </form>
     </div>
   );
