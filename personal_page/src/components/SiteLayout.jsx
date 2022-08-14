@@ -8,11 +8,6 @@ const SiteLayout = () => {
   // adding loading icon and overlay
   return (
     <div className="container">
-      {/* <div className="loading">
-        <div className="loading-ring">
-          <div></div>
-        </div>
-      </div> */}
       <Navbar
         img={cloud}
         firstItem="About"

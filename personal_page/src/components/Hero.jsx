@@ -1,27 +1,32 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Button from "../shared/Button";
 import {db} from "../shared/firebase";
 import {
   doc,
-  getDoc,
   onSnapshot
 } from "firebase/firestore";
+import Loading from "../shared/Loading";
 
 const Hero = (props) => {
   const onClickHandler = () => {};
   const [text, setText] = useState("");
-  // setting text dynamically
+  const [loading, setLoading] = useState(true);
   const docRef = doc(db, 'hero', '3L9JUalhdDk00qWrQFAH');
-  onSnapshot(docRef, (doc) => {
-    setText(doc.data().hero_text);
-  })
-  // .then( (doc) => {
-  //   setText(doc.data().hero_text);
-  // })
-  // .catch( (err) => {
-  //   console.log(err.message);
-  // })
+  if (loading) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+  
+  useEffect(() => {
+    onSnapshot(docRef, (doc) => {
+      setText(doc.data().hero_text);
+      setLoading(false);
+    })
+  }, []);
   return (
+    <>
+    {loading && <Loading />}
     <div className="hero fader">
       <div className="hero__text">
         <h2> {text} </h2>
@@ -36,6 +41,7 @@ const Hero = (props) => {
         <img alt="technology-icon" src={props.img} />
       </div>
     </div>
+    </>
   );
 };
 

@@ -48,7 +48,7 @@ const Login = () => {
             }
           })
           navigate('/personal-page-react/dashboard')
-        }, 3000)
+        }, 2000)
         // setTimeout(() => {
         //   setShowCompleteModal({
         //     success: true,
