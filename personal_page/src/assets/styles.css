@@ -66,6 +66,10 @@ a {
   color : black;
 }
 
+.relative {
+  position : relative;
+}
+
 .container {
   max-width: 1440px;
   padding-inline: 5rem;
@@ -868,6 +872,14 @@ input:checked + label {
   text-decoration : underline;
 }
 
+.showPassword {
+  position : absolute;
+  right : 40px;
+  bottom : 105px;
+  cursor : pointer;
+  width : 25px;
+}
+
 .btn-login,
 .btn-signup {
   background : var(--clr-primary-btn-landing);
@@ -881,6 +893,7 @@ input:checked + label {
   padding: 5rem;
   margin : 0 auto;
 }
+
 
 /* Dashboard */
 .sidebar {

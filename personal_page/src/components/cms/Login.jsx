@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db, auth } from "../../shared/firebase";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 import { doc, updateDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import showPass from "../../assets/showPassword.png";
 
 const Login = () => {
   const [creds, setCreds] = useState({
@@ -19,10 +20,19 @@ const Login = () => {
     success: false,
     open: false,
   });
-  const currentUser = doc(db, 'currentUser', 'currentUser');
+  const currentUser = doc(db, "currentUser", "currentUser");
   const [errorMsg, setErrorMsg] = useState("");
   const loginForm = useRef("loginForm");
   const navigate = useNavigate();
+
+  const showPassword = () => {
+    const password = document.querySelector(".password");
+    if (password.type === "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  };
 
   const loginFormHandler = (e) => {
     e.preventDefault();
@@ -35,17 +45,17 @@ const Login = () => {
         setErrorMsg("");
         setTimeout(() => {
           onAuthStateChanged(auth, (user) => {
-            if (user) {   
+            if (user) {
               const email = user.email;
-              const emailSymbolIndex = email.indexOf('@');
+              const emailSymbolIndex = email.indexOf("@");
               const userName = email.slice(0, emailSymbolIndex);
-              updateDoc(currentUser, { user : userName } )
+              updateDoc(currentUser, { user: userName });
             } else {
               console.log("User not found");
             }
-          })
-          navigate('/personal-page-react/dashboard')
-        }, 2000)
+          });
+          navigate("/personal-page-react/dashboard");
+        }, 2000);
         // setTimeout(() => {
         //   setShowCompleteModal({
         //     success: true,
@@ -81,7 +91,7 @@ const Login = () => {
     setTimeout(() => {
       setShowCompleteModal({
         ...showCompleteModal,
-        open: false
+        open: false,
       });
       document.body.style.overflow = "hidden";
     }, 1000);
@@ -94,29 +104,36 @@ const Login = () => {
   return (
     <div className="login">
       <h2 className="login__heading">Login: </h2>
-      <form ref={loginForm} className="login__form" onSubmit={loginFormHandler}>
-        <label htmlFor="email"> Email: </label>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={creds.email}
-          onChange={handleChange}
-          className="login__form__input"
-          text=""
-          required
-        />
-        <label htmlFor="password"> Password: </label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={creds.password}
-          onChange={handleChange}
-          className="login__form__input"
-          text=""
-          required
-        />
+      <form ref={loginForm} className="login__form relative" onSubmit={loginFormHandler}>
+          <label htmlFor="email"> Email: </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={creds.email}
+            onChange={handleChange}
+            className="login__form__input email"
+            text=""
+            required
+          />
+          <label htmlFor="password"> Password: </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={creds.password}
+            onChange={handleChange}
+            className="login__form__input password"
+            text=""
+            required
+          />
+          <img
+            src={showPass}
+            alt="Show Password"
+            className="showPassword"
+            onClick={showPassword}
+          />
+
         {showCompleteModal.success && showCompleteModal.open && (
           <Modal
             className="modal modal__login"
