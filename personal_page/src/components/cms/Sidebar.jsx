@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import cloud from "../../assets/cloud.png";
@@ -18,7 +18,7 @@ const Sidebar = (props) => {
     } else if (props.contentManagement === "true") {
       contentManagement.style.background = color;
     }
-  }, [])
+  })
 
   const showHamburger = () => {
     let x = document.getElementById("container-nav-hamb");

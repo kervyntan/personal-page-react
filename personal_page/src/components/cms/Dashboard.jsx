@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import Button from "../../shared/Button";
-import { signOut, updateCurrentUser } from "firebase/auth";
 import { db } from "../../shared/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import SignOutBtn from "./SignOutBtn";

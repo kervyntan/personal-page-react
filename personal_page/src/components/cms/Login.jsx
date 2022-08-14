@@ -5,7 +5,6 @@ import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 import { doc, updateDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import currentUser from "./currentUser";
 
 const Login = () => {
   const [creds, setCreds] = useState({
@@ -15,7 +14,6 @@ const Login = () => {
 
   // probably need redux here to set a global variable/state
   // update the currentUser information
-  const [credsProp, setCredsProp] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
   const [showCompleteModal, setShowCompleteModal] = useState({
     success: false,
@@ -34,7 +32,6 @@ const Login = () => {
       .then((creds) => {
         // console.log(email + " is logged in!");
         // console.log(creds.user);
-        setCredsProp(creds.user);
         setErrorMsg("");
         setTimeout(() => {
           onAuthStateChanged(auth, (user) => {

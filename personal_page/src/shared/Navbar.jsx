@@ -1,7 +1,5 @@
 import React from "react";
-import About from "../components/About";
-import Hero from "../components/Hero";
-import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Navbar = (props) => {
   const showHamburger = () => {
