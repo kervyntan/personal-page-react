@@ -894,7 +894,6 @@ input:checked + label {
   margin : 0 auto;
 }
 
-
 /* Dashboard */
 .sidebar {
   display : flex;
@@ -1194,6 +1193,18 @@ input:checked + label {
 
   .btn {
     padding-inline: 3rem;
+  }
+  
+  .login__form,
+  .signup__form {
+    grid-template-columns: 1fr;
+    width : 100%;
+    padding : 1rem;
+  }
+
+  .showPassword {
+    right : 10px;
+    bottom : 125px;
   }
 }
 

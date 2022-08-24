@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cloud from "../assets/cloud.png";
 import skills from "../shared/skills.js";
 import GitCurveWithCircle from "../shared/GitCurveWithCircle";
@@ -10,6 +10,9 @@ import PersonSVG from "../shared/PersonSVG";
 import ExperienceSVG from "../shared/ExperienceSVG";
 import GitBranch from "../shared/GitBranch";
 import Circle from "../shared/Circle";
+import {db} from "../shared/firebase";
+import {doc, onSnapshot} from "firebase/firestore";
+import Loading from "../shared/Loading";
 
 const About = () => {
   // onClickHandler to display text about skill
@@ -19,6 +22,12 @@ const About = () => {
 
   // storing value of each skill in 1 state
   // update each value as true or false
+  const [loading, setLoading] = useState(true);
+  const [aboutText, setAboutText] = useState( {
+    para_one : "",
+    para_two: "",
+    para_three : ""
+  })
   const [skillChecked, setSkillChecked] = useState({
     "1": true,
     "2": false,
@@ -35,6 +44,18 @@ const About = () => {
   //   if (radios[i].type === "radio" && radios[i].checked) {
   //   }
   // }
+
+  const docRef = doc(db, 'about', 'about');
+  useEffect(() => {
+    onSnapshot(docRef, (doc) => {
+      setAboutText({
+        para_one : doc.data().para_one,
+        para_two : doc.data().para_two,
+        para_three : doc.data().para_three
+      });
+      setLoading(false);
+    })
+  }, []);
   const showSkillHandler = (e) => {
     if (e.target.checked) {
       // if (e.target.id === "skill 1") {
@@ -105,6 +126,9 @@ const About = () => {
 
   return (
     <div className="about center">
+      {loading && <Loading />}
+      {/* {!loading && (
+        <> */}
       <CloudAndSun />
       <h2 className="about__heading">About Me</h2>
 
@@ -117,19 +141,13 @@ const About = () => {
         </div>
         <div className="about__section__one__text">
           <p className="about__section__one__text__para">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident,
-            minima nam dignissimos, eveniet debitis soluta iusto aliquam tempora
-            natus odit rem exercitationem maxime, quaerat asperiores voluptatem
-            ab animi. Ea, possimus.
+            {aboutText.para_one}
           </p>
           <p className="about__section__one__text__para">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-            temporibus voluptas libero voluptatibus, minima numquam! Molestiae
-            cum animi enim soluta.
+          {aboutText.para_two}
           </p>
           <p className="about__section__one__text__para">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, illo
-            perferendis incidunt voluptatibus distinctio molestias?
+          {aboutText.para_three}
           </p>
         </div>
       </div>
@@ -219,6 +237,8 @@ const About = () => {
       </div>
 
       <GitCurveWithCircle />
+      {/* </>
+      )} */}
     </div>
   );
 };
