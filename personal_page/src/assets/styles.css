@@ -943,6 +943,7 @@ input:checked + label {
   padding-block : 0;
 }
 
+
 /* Animation */
 
 @keyframes risingSun {
@@ -1173,7 +1174,6 @@ input:checked + label {
   }
 
   .hero {
-    flex-direction: column;
     text-align: center;
   }
 
@@ -1187,7 +1187,7 @@ input:checked + label {
     text-align: center;
   }
 
-  .about__landing__image-with-text {
+  .about__landing__image-with-text, .contact__form, .hero {
     flex-direction: column;
   }
 
@@ -1206,6 +1206,19 @@ input:checked + label {
     right : 10px;
     bottom : 125px;
   }
+
+  .contact__form__container {
+    order : 2;
+  }
+
+  .cv_download {
+    order : 1;
+  }
+
+  .contact > img {
+    width : 100%;
+  }
+
 }
 
 /* Test Code
