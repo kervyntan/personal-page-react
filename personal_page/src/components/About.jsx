@@ -23,10 +23,16 @@ const About = () => {
   // storing value of each skill in 1 state
   // update each value as true or false
   const [loading, setLoading] = useState(true);
-  const [aboutText, setAboutText] = useState( {
+  const [aboutText, setAboutText] = useState({
     para_one : "",
     para_two: "",
     para_three : ""
+  })
+  const [aboutSkills, setAboutSkills] = useState({
+    react : "",
+    html : "",
+    sql : "",
+    node : ""
   })
   const [skillChecked, setSkillChecked] = useState({
     "1": true,
@@ -46,6 +52,7 @@ const About = () => {
   // }
 
   const docRef = doc(db, 'about', 'about');
+  const docRefSkills = doc(db, 'about', 'skills');
   useEffect(() => {
     onSnapshot(docRef, (doc) => {
       setAboutText({
@@ -53,8 +60,18 @@ const About = () => {
         para_two : doc.data().para_two,
         para_three : doc.data().para_three
       });
-      setLoading(false);
+    
+    onSnapshot(docRefSkills, (doc) => {
+      setAboutSkills({
+        react : doc.data().reac,
+        html : doc.data().htm,
+        sql : doc.data().sq,
+        node : doc.data().nod
+      })
     })
+      setLoading(false);
+    });
+
   }, []);
   const showSkillHandler = (e) => {
     if (e.target.checked) {
@@ -177,16 +194,10 @@ const About = () => {
                 {skillChecked["1"] && (
                   <>
                     <p className="git__branch__circle__right__para">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Unde eum obcaecati ratione aliquam officiis repellat
-                      perspiciatis officia iusto tenetur. Ut quidem perferendis
-                      dolorem aliquam laborum officiis a in quibusdam molestiae.
+                      {aboutSkills.react}
                     </p>
                     <p className="git__branch__circle__right__para">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Aperiam soluta harum tempora? Eius sunt perspiciatis
-                      dolorem laboriosam, enim ex? Illo aspernatur corrupti
-                      placeat ipsam fugiat fugit aperiam sit, distinctio id?
+                      {aboutSkills.react}
                     </p>
                   </>
                 )}
@@ -194,10 +205,7 @@ const About = () => {
                   <>
                     <p className="git__branch__circle__right__para">Flying</p>
                     <p className="git__branch__circle__right__para">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Aperiam soluta harum tempora? Eius sunt perspiciatis
-                      dolorem laboriosam, enim ex? Illo aspernatur corrupti
-                      placeat ipsam fugiat fugit aperiam sit, distinctio id?
+                      {aboutSkills.html}
                     </p>
                   </>
                 )}
@@ -205,10 +213,7 @@ const About = () => {
                   <>
                     <p className="git__branch__circle__right__para">Three</p>
                     <p className="git__branch__circle__right__para">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Aperiam soluta harum tempora? Eius sunt perspiciatis
-                      dolorem laboriosam, enim ex? Illo aspernatur corrupti
-                      placeat ipsam fugiat fugit aperiam sit, distinctio id?
+                      {aboutSkills.sql}
                     </p>
                   </>
                 )}
@@ -216,10 +221,7 @@ const About = () => {
                   <>
                     <p className="git__branch__circle__right__para">Four</p>
                     <p className="git__branch__circle__right__para">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Aperiam soluta harum tempora? Eius sunt perspiciatis
-                      dolorem laboriosam, enim ex? Illo aspernatur corrupti
-                      placeat ipsam fugiat fugit aperiam sit, distinctio id?
+                      {aboutSkills.node}
                     </p>
                   </>
                 )}
