@@ -14,6 +14,9 @@ import {db} from "../shared/firebase";
 import {doc, onSnapshot} from "firebase/firestore";
 import Loading from "../shared/Loading";
 
+// Todo:
+// Add the content for About page that are linked to firebase
+// to db
 const About = () => {
   // onClickHandler to display text about skill
   // onClick -> should:
