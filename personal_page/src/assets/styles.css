@@ -894,6 +894,10 @@ input:checked + label {
   margin : 0 auto;
 }
 
+.content-management-btn {
+  margin-left : 10px;
+}
+
 /* Dashboard */
 .sidebar {
   display : flex;
