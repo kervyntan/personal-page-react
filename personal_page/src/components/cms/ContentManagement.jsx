@@ -4,6 +4,8 @@ import Button from "../../shared/Button";
 import {db} from "../../shared/firebase";
 import {updateDoc, doc} from "firebase/firestore";
 import SignOutBtn  from './SignOutBtn';
+import { Accordion } from '@mui/material';
+
 
 const ContentManagement = () => {
     const docRef = doc(db, 'hero', '3L9JUalhdDk00qWrQFAH');
@@ -42,6 +44,7 @@ const ContentManagement = () => {
           value={inputValues.hero_text}
         />
         <Button type="submit" text="Click Here"/>
+        {/* add input for about single page + about landing page */}
       </form>
     </div>
     </>
