@@ -40,27 +40,18 @@ const ContentManagement = () => {
 
   const submitFormHero = (e) => {
     e.preventDefault();
-    setHeroInputValues({
-      hero_text: "",
-      reachme_text: "",
-    });
     updateDoc(docRef, {
       hero_text: heroInputValues.hero_text,
     });
+    // setHeroInputValues({
+    //   hero_text: "",
+    //   reachme_text: "",
+    // });
 
     console.log("Data has been changed.");
   };
   const submitFormAbout = (e) => {
     e.preventDefault();
-    setHeroInputValues({
-      main_para_one: "",
-      main_para_two: "",
-      main_para_three: "",
-      html_text: "",
-      react_text: "",
-      sql_text: "",
-      node_text: ""
-    });
     updateDoc(docRefAbout, {
       para_one: aboutInputValues.main_para_one,
       para_two: aboutInputValues.main_para_two,
@@ -73,6 +64,15 @@ const ContentManagement = () => {
       reac: aboutInputValues.sql_text,
       sq: aboutInputValues.node_text
     });
+    // setAboutInputValues({
+    //   main_para_one: "",
+    //   main_para_two: "",
+    //   main_para_three: "",
+    //   html_text: "",
+    //   react_text: "",
+    //   sql_text: "",
+    //   node_text: ""
+    // });
 
     console.log("Data has been changed.");
   };
@@ -163,7 +163,7 @@ const ContentManagement = () => {
               <label htmlFor="html_text"> HTML Skill: </label>
               <input
                 className="content-management__form__input"
-                name="sql_text"
+                name="html_text"
                 onChange={handleChangeAbout}
                 value={aboutInputValues.html_text}
               />
