@@ -6,7 +6,6 @@ import React from "react";
 // import webdev from "./assets/web-dev.png";
 // import networkIcon from "./assets/network-icon.png";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Hero from "./components/Hero";
 import About from "./components/About";
 import "./shared/observer";
 import Home from "./components/Home";
@@ -17,6 +16,7 @@ import AdminLayout from "./components/cms/AdminLayout";
 import SiteLayout from "./components/SiteLayout";
 import ContentManagement from "./components/cms/ContentManagement";
 import Contact from "./components/Contact";
+import Portfolio from "./components/Portfolio";
 
 export default function App() {
   // window.onscroll = () => {
@@ -63,7 +63,7 @@ export default function App() {
           <Route element={<SiteLayout />}>
             <Route index element={<Home />} />
             <Route path="/personal-page-react/about" element={<About />} />
-            <Route path="/personal-page-react/portfolio" element={<Hero />} />
+            <Route path="/personal-page-react/portfolio" element={<Portfolio />} />
             <Route path="/personal-page-react/contact" element={<Contact />} />
           </Route>
           <Route element={<AdminLayout />}>

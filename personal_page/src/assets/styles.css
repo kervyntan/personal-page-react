@@ -616,6 +616,41 @@ input:checked + label {
   display: flex;
 }
 
+/* Portfolio Page */
+.portfolio {
+  text-align : center;
+}
+
+.portfolio-title {
+  color : var(--clr-text);
+  font-weight : 500;
+  letter-spacing: 0.05em;
+}
+
+.bulb {
+  width : 100px;
+}
+
+.project {
+  color : var(--clr-text);
+  text-align: left;
+}
+
+.project-showcase {
+  background : white;
+  width : 100%;
+  height : 200px;
+  border-radius : 20px;
+  margin-top : 20px;
+}
+
+.grid {
+  display : grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  grid-gap : 1em;
+}
+
 /* Contact Page */
 .contact {
   text-align : center;
