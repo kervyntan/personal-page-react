@@ -13,7 +13,7 @@ import Circle from "../shared/Circle";
 import {db} from "../shared/firebase";
 import {doc, onSnapshot} from "firebase/firestore";
 import Loading from "../shared/Loading";
-import { Timeline, Text } from '@mantine/core';
+import { ThemeIcon, Text, Avatar, Timeline } from '@mantine/core';
 
 // Todo:
 // Add the content for About page that are linked to firebase
@@ -235,11 +235,17 @@ const About = () => {
       <GitCurveWithCircle />
       
       <Timeline>
-        <Timeline.item title="My Journey" bulletSize={24}>
+        <Timeline.Item title="My Journey" bulletSize={24}>
           <Text color="dimmed" size="sm">
             Default Text here
           </Text>
-        </Timeline.item>
+        </Timeline.Item>
+
+        <Timeline.Item title="My next step" bulletSize={24}>
+          <Text color="dimmed" size="sm">
+            This is how it should look like
+          </Text>
+        </Timeline.Item>
       </Timeline>
     </div>
   );
