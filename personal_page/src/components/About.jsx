@@ -13,6 +13,7 @@ import Circle from "../shared/Circle";
 import {db} from "../shared/firebase";
 import {doc, onSnapshot} from "firebase/firestore";
 import Loading from "../shared/Loading";
+import { Timeline, Text } from '@mantine/core';
 
 // Todo:
 // Add the content for About page that are linked to firebase
@@ -43,16 +44,6 @@ const About = () => {
     "3": false,
     "4": false
   });
-  // const [skillTwoChecked, setSkillTwoChecked] = useState(false);
-  // const [skillThreeChecked, setSkillThreeChecked] = useState(false);
-  // const [skillFourChecked, setSkillFourChecked] = useState(false);
-
-  // const radios = document.getElementsByTagName("input");
-  // // console.log(radios);
-  // for (let i = 0; i < radios.length; i++) {
-  //   if (radios[i].type === "radio" && radios[i].checked) {
-  //   }
-  // }
 
   const docRef = doc(db, 'about', 'about');
   const docRefSkills = doc(db, 'about', 'skills');
@@ -242,8 +233,14 @@ const About = () => {
       </div>
 
       <GitCurveWithCircle />
-      {/* </>
-      )} */}
+      
+      <Timeline>
+        <Timeline.item title="My Journey" bulletSize={24}>
+          <Text color="dimmed" size="sm">
+            Default Text here
+          </Text>
+        </Timeline.item>
+      </Timeline>
     </div>
   );
 };

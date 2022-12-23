@@ -6,10 +6,10 @@ const Navbar = (props) => {
     var x = document.getElementById("container-nav-hamb");
     if (x.style.display === "block") {
       x.style.display = "none";
-      // document.body.style.overflow = "hidden";
+      document.body.style.overflow = "unset";
     } else {
       x.style.display = "block";
-      // document.body.style.overflow = "unset";
+      document.body.style.overflow = "hidden";
     }
   };
 
@@ -24,7 +24,6 @@ const Navbar = (props) => {
       </div>
 
       <ul className="nav-list">
-        {/* change to routes  */}
         <li className="nav-list-item">
           <Link to="/personal-page-react/about"> {props.firstItem} </Link>
         </li>

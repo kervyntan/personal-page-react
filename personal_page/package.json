@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
-    "@emotion/react": "^11.10.4",
+    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.4",
+    "@mantine/core": "^5.9.5",
+    "@mantine/hooks": "^5.9.5",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.5",
     "@testing-library/jest-dom": "^5.16.4",
