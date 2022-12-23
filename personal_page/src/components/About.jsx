@@ -10,8 +10,8 @@ import PersonSVG from "../shared/PersonSVG";
 import ExperienceSVG from "../shared/ExperienceSVG";
 import GitBranch from "../shared/GitBranch";
 import Circle from "../shared/Circle";
-import {db} from "../shared/firebase";
-import {doc, onSnapshot} from "firebase/firestore";
+import { db } from "../shared/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 import Loading from "../shared/Loading";
 import { ThemeIcon, Text, Avatar, Timeline } from '@mantine/core';
 
@@ -28,15 +28,15 @@ const About = () => {
   // update each value as true or false
   const [loading, setLoading] = useState(true);
   const [aboutText, setAboutText] = useState({
-    para_one : "",
+    para_one: "",
     para_two: "",
-    para_three : ""
+    para_three: ""
   })
   const [aboutSkills, setAboutSkills] = useState({
-    react : "",
-    html : "",
-    sql : "",
-    node : ""
+    react: "",
+    html: "",
+    sql: "",
+    node: ""
   })
   const [skillChecked, setSkillChecked] = useState({
     "1": true,
@@ -50,19 +50,19 @@ const About = () => {
   useEffect(() => {
     onSnapshot(docRef, (doc) => {
       setAboutText({
-        para_one : doc.data().para_one,
-        para_two : doc.data().para_two,
-        para_three : doc.data().para_three
+        para_one: doc.data().para_one,
+        para_two: doc.data().para_two,
+        para_three: doc.data().para_three
       });
-    
-    onSnapshot(docRefSkills, (doc) => {
-      setAboutSkills({
-        react : doc.data().reac,
-        html : doc.data().htm,
-        sql : doc.data().sq,
-        node : doc.data().nod
+
+      onSnapshot(docRefSkills, (doc) => {
+        setAboutSkills({
+          react: doc.data().reac,
+          html: doc.data().htm,
+          sql: doc.data().sq,
+          node: doc.data().nod
+        })
       })
-    })
       setLoading(false);
     });
 
@@ -155,10 +155,10 @@ const About = () => {
             {aboutText.para_one}
           </p>
           <p className="about__section__one__text__para">
-          {aboutText.para_two}
+            {aboutText.para_two}
           </p>
           <p className="about__section__one__text__para">
-          {aboutText.para_three}
+            {aboutText.para_three}
           </p>
         </div>
       </div>
@@ -233,14 +233,24 @@ const About = () => {
       </div>
 
       <GitCurveWithCircle />
-      
-      <Timeline>
-        <Timeline.Item title="My Journey" bulletSize={24}>
+
+      <Timeline active={1}>
+        <Timeline.Item title="My Journey" bulletSize={24} lineVariant="dashed">
           <Text color="dimmed" size="sm">
             Default Text here
           </Text>
         </Timeline.Item>
 
+        <Timeline.Item title="My next step" bulletSize={24}>
+          <Text color="dimmed" size="sm">
+            This is how it should look like
+          </Text>
+        </Timeline.Item>
+        <Timeline.Item title="My next step" bulletSize={24} lineVariant="dashed">
+          <Text color="dimmed" size="sm">
+            This is how it should look like
+          </Text>
+        </Timeline.Item>
         <Timeline.Item title="My next step" bulletSize={24}>
           <Text color="dimmed" size="sm">
             This is how it should look like
