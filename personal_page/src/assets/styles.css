@@ -254,9 +254,18 @@ ul li {
   flex: 100%;
 }
 
-/* img {
-  outline: 3px solid red;
-} */
+/* About Page */
+.skills_description {
+  display : flex;
+  justify-content : space-between;
+  margin-top : 40px;
+}
+
+.mantine-Timeline-itemTitle {
+  color : var(--clr-text);
+  font-size : 2rem;
+  font-family : "DM Sans", sans-serif;
+}
 
 /* About-me Landing */
 .about__landing {

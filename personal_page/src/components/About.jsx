@@ -13,7 +13,7 @@ import Circle from "../shared/Circle";
 import { db } from "../shared/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import Loading from "../shared/Loading";
-import { ThemeIcon, Text, Avatar, Timeline } from '@mantine/core';
+import { ThemeIcon, Text, Avatar, Timeline, Navbar } from '@mantine/core';
 
 // Todo:
 // Add the content for About page that are linked to firebase
@@ -163,7 +163,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="git__branch__container">
+      {/* <div className="git__branch__container">
         <GitBranch className="fifty" />
         <PersonSVG />
         <h2 className="git__branch__container__content__heading"> Skills </h2>
@@ -182,9 +182,8 @@ const About = () => {
               </div>
 
               <div className="git__branch__container__circle__middle">
-                <ul className="skills__list">{arrSkills.map(mapSkills)}</ul>
-              </div>
-              <div className="git__branch__circle__right">
+                {/* <ul className="skills__list">{arrSkills.map(mapSkills)}</ul> */}
+              {/* <div className="git__branch__circle__right">
                 {skillChecked["1"] && (
                   <>
                     <p className="git__branch__circle__right__para">
@@ -219,8 +218,8 @@ const About = () => {
                     </p>
                   </>
                 )}
-              </div>
-            </div>
+              </div> */}
+            {/* </div>
           </div>
         </div>
       </div>
@@ -232,30 +231,70 @@ const About = () => {
         </h2>
       </div>
 
-      <GitCurveWithCircle />
+      <GitCurveWithCircle /> */} 
 
-      <Timeline active={1}>
-        <Timeline.Item title="My Journey" bulletSize={24} lineVariant="dashed">
-          <Text color="dimmed" size="sm">
-            Default Text here
-          </Text>
+
+      {/* <Navbar height={100} p="xs" width={{base : "100vw"}}>
+        <Navbar.Section> Logo </Navbar.Section>
+        <Navbar.Section grow mt="md"> Selection </Navbar.Section>
+      </Navbar> */}
+      <Timeline active={1} style={{marginTop : "40px"}}>
+        <Timeline.Item title="Skills" bulletSize={24} lineVariant="dashed"
+          bullet={<Avatar size={22} radius="xl" src={<PersonSVG />} />} >
+        <div className="skills_description">
+        <ul className="skills__list">{arrSkills.map(mapSkills)}</ul>
+        {skillChecked["1"] && (
+                  <>
+                    {/* <p className="git__branch__circle__right__para">
+                      {aboutSkills.react}
+                    </p> */}
+                    <p className="git__branch__circle__right__para">
+                      {aboutSkills.react}
+                    </p>
+                  </>
+                )}
+                {skillChecked["2"] && (
+                  <>
+                    {/* <p className="git__branch__circle__right__para">Flying</p> */}
+                    <p className="git__branch__circle__right__para">
+                      {aboutSkills.html}
+                    </p>
+                  </>
+                )}
+                {skillChecked["3"] && (
+                  <>
+                    {/* <p className="git__branch__circle__right__para">Three</p> */}
+                    <p className="git__branch__circle__right__para">
+                      {aboutSkills.sql}
+                    </p>
+                  </>
+                )}
+                {skillChecked["4"] && (
+                  <>
+                    {/* <p className="git__branch__circle__right__para">Four</p> */}
+                    <p className="git__branch__circle__right__para">
+                      {aboutSkills.node}
+                    </p>
+                  </>
+                )}
+        </div>
         </Timeline.Item>
 
+        <Timeline.Item title="Experiences" bulletSize={24}>
+          <Text color="dimmed" size="sm">
+            This is how it should look like
+          </Text>
+        </Timeline.Item>
+        {/* <Timeline.Item title="My next step" bulletSize={24} lineVariant="dashed">
+          <Text color="dimmed" size="sm">
+            This is how it should look like
+          </Text>
+        </Timeline.Item>
         <Timeline.Item title="My next step" bulletSize={24}>
           <Text color="dimmed" size="sm">
             This is how it should look like
           </Text>
-        </Timeline.Item>
-        <Timeline.Item title="My next step" bulletSize={24} lineVariant="dashed">
-          <Text color="dimmed" size="sm">
-            This is how it should look like
-          </Text>
-        </Timeline.Item>
-        <Timeline.Item title="My next step" bulletSize={24}>
-          <Text color="dimmed" size="sm">
-            This is how it should look like
-          </Text>
-        </Timeline.Item>
+        </Timeline.Item> */}
       </Timeline>
     </div>
   );
